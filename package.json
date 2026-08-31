@@ -1,0 +1,9 @@
+{
+  "name": "eatntreat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "eatNtreat - Healthy Puppies, Pet Grooming & Gourmet Treats",
+  "scripts": {
+    "build": "echo 'Static build complete'"
+  }
+}
