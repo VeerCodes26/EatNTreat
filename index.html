@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>eatNtreat • Healthy Puppies, Pet Grooming & Gourmet Treats in India</title>
+  <meta name="description" content="eatNtreat India - Healthy vaccinated puppies, doorstep salon grooming by city/town/village pricing, and premium pet food & treats.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <div class="container-custom">
+      <div class="announcement-content">
+        <span class="announcement-badge">🍖 Welcome to eatNtreat</span>
+        <span>Gourmet Pet Treats, Healthy Puppies & Doorstep Grooming Vans across <strong>Cities, Towns & Villages</strong>!</span>
+        <a href="#section-shop" class="announcement-link">Shop Fresh Treats →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header (Clean & Animated eatNtreat Style) -->
+  <header class="main-header" id="header">
+    <div class="container-custom">
+      <div class="nav-wrapper gf-exact-header">
+        
+        <!-- Left Group: Search Icon + Location Pill + Profile Button + Logo -->
+        <div class="header-left-cluster">
+          
+          <!-- Mobile Menu Toggle Button (Visible on Phone) -->
+          <button class="mobile-menu-btn" id="btn-mobile-menu" aria-label="Open Navigation Menu">
+            <i data-lucide="menu"></i>
+          </button>
+
+          <!-- Search Trigger Icon -->
+          <button class="gf-search-icon-btn" id="btn-search-modal-toggle" title="Search eatNtreat">
+            <i data-lucide="search"></i>
+          </button>
+
+          <!-- Location Pill: [ Delhi NCR ⌵ ] -->
+          <div class="location-dropdown" id="location-select-wrap">
+            <button class="gf-location-pill" id="location-btn" title="Select Location">
+              <span id="current-city-label">Delhi NCR</span>
+              <i data-lucide="chevron-down" class="chevron-sm"></i>
+            </button>
+            <div class="location-menu" id="location-menu">
+              <div class="location-menu-header">Select Area Tier</div>
+              <button class="loc-option active" data-city="Delhi NCR" data-tier="city">🏙️ Delhi NCR (Metro)</button>
+              <button class="loc-option" data-city="Mumbai" data-tier="city">🏙️ Mumbai (Metro)</button>
+              <button class="loc-option" data-city="Bangalore" data-tier="city">🏙️ Bangalore (Metro)</button>
+              <button class="loc-option" data-city="Jaipur" data-tier="town">🏘️ Jaipur (Town / Tier-2)</button>
+              <button class="loc-option" data-city="Chandigarh" data-tier="town">🏘️ Chandigarh (Town / Tier-2)</button>
+              <button class="loc-option" data-city="Rural Outskirts" data-tier="village">🌾 Rural / Village Outskirts</button>
+            </div>
+          </div>
+
+          <!-- Account / User Profile Circle Icon -->
+          <button class="gf-profile-btn" id="btn-open-auth-modal" title="Sign In / My Account">
+            <i data-lucide="user"></i>
+          </button>
+
+          <!-- Brand Logo: eatNtreat° (With Smooth Motion Glow) -->
+          <a href="#section-hero" class="gf-brand-logo ent-brand-logo" title="eatNtreat India">
+            <span class="ent-logo-text">eat<span class="ent-logo-n">N</span>treat</span>
+            <span class="ent-logo-dot"></span>
+          </a>
+
+        </div>
+
+        <!-- Center & Right Navigation Links -->
+        <nav class="gf-nav-menu">
+          <a href="#section-hero" class="gf-nav-link active">Home</a>
+          <a href="#section-puppies" class="gf-nav-link">Dogs</a>
+          <a href="#section-grooming" class="gf-nav-link">Cats & Spa</a>
+          <a href="#section-shop" class="gf-nav-link ent-treats-nav"><i data-lucide="cookie" class="icon-inline"></i> Treats & Food</a>
+          <a href="#section-breeds" class="gf-nav-link">Pet Breeds</a>
+          <a href="javascript:void(0)" class="gf-nav-link" onclick="openSellPetModal()">Sell a Pet</a>
+          <a href="#section-price-guide" class="gf-nav-link">Price Guide</a>
+        </nav>
+
+        <!-- Right Quick Actions: Cart -->
+        <div class="gf-nav-actions">
+          <button class="cart-btn ent-cart-btn" id="btn-cart-toggle" title="View Cart">
+            <i data-lucide="shopping-bag"></i>
+            <span class="cart-badge" id="cart-item-count">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Collapsible Search Bar (Activated by Search Icon) -->
+    <div class="gf-search-dropdown-bar" id="gf-search-bar-expandable">
+      <div class="container-custom">
+        <div class="gf-search-inner">
+          <i data-lucide="search" class="search-inner-icon"></i>
+          <input type="text" id="global-pet-search" placeholder="Search treats, food, puppy breeds, or doorstep grooming...">
+          <button class="search-close-x" id="btn-close-search-bar"><i data-lucide="x"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= AUTH / SIGN IN MODAL (EXACT MATCH TO IMAGE 2) ================= -->
+  <div class="modal-backdrop" id="auth-signin-modal">
+    <div class="gf-auth-card">
+      <button class="gf-auth-close-btn" id="btn-close-auth-modal" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="gf-auth-content">
+        <h2 class="gf-auth-title" id="auth-modal-title">Sign In</h2>
+        <p class="gf-auth-subtitle" id="auth-modal-subtitle">Get started with eatNtreat now by signing in</p>
+
+        <form id="gf-auth-form" onsubmit="handleAuthSubmit(event)">
+          
+          <!-- Email Field -->
+          <div class="gf-form-group">
+            <label for="auth-email">Email</label>
+            <input type="email" id="auth-email" placeholder="Enter Email Address" required autocomplete="email">
+          </div>
+
+          <!-- Password Field -->
+          <div class="gf-form-group">
+            <label for="auth-password">Password</label>
+            <input type="password" id="auth-password" placeholder="Enter Password" required autocomplete="current-password">
+          </div>
+
+          <!-- Sign In Submit Button -->
+          <button type="submit" class="gf-btn-signin" id="btn-auth-submit">
+            Sign In
+          </button>
+
+          <!-- Forgot Password Link -->
+          <div class="gf-auth-forgot-row">
+            <a href="javascript:void(0)" onclick="handleForgotPassword()" class="gf-forgot-link">Forgot Password?</a>
+          </div>
+
+          <!-- Google Continue Button -->
+          <button type="button" class="gf-btn-google" onclick="handleGoogleSignIn()">
+            <svg class="google-svg-icon" viewBox="0 0 48 48" width="20" height="20">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span>Continue With Google</span>
+          </button>
+
+          <!-- Register / Switch Mode Link -->
+          <div class="gf-auth-switch-row">
+            <span id="auth-switch-text">Don't have an account?</span>
+            <a href="javascript:void(0)" onclick="toggleAuthMode()" class="gf-orange-link" id="auth-switch-link">Register Now</a>
+          </div>
+
+          <!-- Terms Disclaimer -->
+          <p class="gf-auth-disclaimer">
+            By continuing I am agreeing to all the <a href="javascript:void(0)">terms</a> & <a href="javascript:void(0)">conditions</a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Slide-In Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobile-nav-backdrop">
+    <div class="mobile-drawer-panel">
+      <div class="mobile-drawer-header">
+        <div class="gf-brand-logo ent-brand-logo">
+          <span class="ent-logo-text">eat<span class="ent-logo-n">N</span>treat</span>
+          <span class="ent-logo-dot"></span>
+        </div>
+        <button class="modal-close-btn" id="btn-close-mobile-nav"><i data-lucide="x"></i></button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <div class="mobile-search-wrap">
+          <input type="text" id="mobile-pet-search" placeholder="Search treats, food, puppies, spa...">
+        </div>
+
+        <nav class="mobile-nav-links">
+          <a href="#section-hero" class="mob-link active"><i data-lucide="home"></i> Home</a>
+          <a href="#section-shop" class="mob-link text-orange"><i data-lucide="cookie"></i> Gourmet Treats & Food</a>
+          <a href="#section-puppies" class="mob-link"><i data-lucide="dog"></i> Dogs & Puppies for Sale</a>
+          <a href="#section-grooming" class="mob-link"><i data-lucide="scissors"></i> Cats & Doorstep Grooming</a>
+          <a href="#section-breeds" class="mob-link"><i data-lucide="award"></i> Pet Breeds Guide</a>
+          <a href="javascript:void(0)" onclick="openSellPetModal()" class="mob-link"><i data-lucide="plus-circle"></i> Sell a Pet / Breeder</a>
+          <a href="#section-price-guide" class="mob-link"><i data-lucide="calculator"></i> Price Guide & Blog</a>
+          <a href="javascript:void(0)" onclick="openAuthModal()" class="mob-link text-orange"><i data-lucide="user"></i> Sign In / Register</a>
+        </nav>
+
+        <div class="mobile-drawer-footer">
+          <a href="tel:+918779692292" class="btn-primary-orange full-w">
+            <i data-lucide="phone"></i> Call +91 87796 92292
+          </a>
+          <a href="https://wa.me/918779692292" class="btn-whatsapp full-w mt-2">
+            <i data-lucide="message-circle"></i> WhatsApp Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SECTION 1: HERO BANNER (CLEAN & DUAL-SERVICE) ================= -->
+  <section id="section-hero" class="hero-section">
+    <div class="hero-bg-shapes">
+      <div class="shape-blob blob-1"></div>
+      <div class="shape-blob blob-2"></div>
+      <div class="ambient-particle particle-1"></div>
+      <div class="ambient-particle particle-2"></div>
+    </div>
+
+    <div class="container-custom">
+      <div class="hero-grid">
+        
+        <!-- Left Hero Text -->
+        <div class="hero-text-content">
+          <div class="hero-eyebrow-pill ent-hero-pill">
+            <span class="pill-dot"></span>
+            <span>INDIA'S FAVORITE PET ADOPTION, TREATS & GROOMING • eatNtreat</span>
+          </div>
+
+          <h1 class="hero-title">
+            Healthy Puppies, <span class="highlight-orange">Gourmet Treats</span> & Doorstep Grooming
+          </h1>
+
+          <p class="hero-subtitle">
+            Welcome to <strong>eatNtreat</strong>! Whether you are welcoming a healthy purebred puppy, treating your fur baby to organic oven-baked gourmet biscuits, or booking a doorstep salon van in <strong>Cities, Towns & Villages</strong>—we deliver 100% certified love and care.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-action-row">
+            <a href="#section-shop" class="btn-primary-orange ent-motion-btn">
+              <i data-lucide="cookie"></i>
+              <span>Explore Treats & Food</span>
+            </a>
+            <a href="#section-puppies" class="btn-secondary-white ent-motion-btn">
+              <i data-lucide="dog"></i>
+              <span>Meet Available Puppies</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges Strip -->
+          <div class="hero-trust-strip">
+            <div class="trust-item">
+              <div class="trust-icon"><i data-lucide="map-pin"></i></div>
+              <div>
+                <strong>City, Town & Village</strong>
+                <span>Tailored Pricing & Vans</span>
+              </div>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <div class="trust-icon"><i data-lucide="credit-card"></i></div>
+              <div>
+                <strong>Flexible EMI Plans</strong>
+                <span>From ₹1,299/month</span>
+              </div>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+              <div class="trust-icon"><i data-lucide="shield-check"></i></div>
+              <div>
+                <strong>100% Health Certified</strong>
+                <span>3-Month Free Vet Support</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual Showcase -->
+        <div class="hero-visual-content">
+          <div class="hero-image-podium">
+            
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80" alt="Happy Puppy and Groomed Dog" class="hero-main-pet-img" id="hero-pet-image">
+
+            <!-- Floating Trust Badges -->
+            <div class="floating-badge badge-top-right">
+              <div class="badge-icon-circle green"><i data-lucide="scissors"></i></div>
+              <div>
+                <strong>Doorstep Grooming Van</strong>
+                <span>Sanitized & AC Equipped</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left">
+              <div class="badge-icon-circle orange"><i data-lucide="award"></i></div>
+              <div>
+                <strong>Purebred Certified</strong>
+                <span>Vaccinated Puppies</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-right">
+              <div class="badge-icon-circle blue"><i data-lucide="truck"></i></div>
+              <div>
+                <strong>Doorstep Delivery</strong>
+                <span>Metros, Towns & Villages</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: DYNAMIC LOCATION-BASED PET GROOMING ================= -->
+  <section id="section-grooming" class="grooming-section">
+    <div class="container-custom">
+      
+      <div class="section-header-center">
+        <span class="section-tag">DOORSTEP PET SPA & GROOMING</span>
+        <h2 class="section-title">Professional Pet Grooming <span class="text-orange">By Area Tier</span></h2>
+        <p class="section-desc-center">Grooming prices dynamically adjust based on your location (Metro City, Town, or Village/Rural Area) ensuring affordable, high-quality salon care right at your doorstep.</p>
+      </div>
+
+      <!-- Location Tier & Pet Customizer Bar -->
+      <div class="grooming-customizer-box">
+        
+        <!-- Step 1: Select Area Tier -->
+        <div class="customizer-col">
+          <label class="customizer-label"><i data-lucide="map-pin"></i> 1. Select Your Area Type:</label>
+          <div class="tier-toggle-group">
+            <button class="tier-btn active" data-tier="city">
+              <span class="tier-icon">🏙️</span>
+              <div class="tier-text">
+                <strong>Metro City</strong>
+                <span>Delhi, Mumbai, Bangalore</span>
+              </div>
+            </button>
+            <button class="tier-btn" data-tier="town">
+              <span class="tier-icon">🏘️</span>
+              <div class="tier-text">
+                <strong>Town / Tier-2</strong>
+                <span>Jaipur, Chandigarh, Pune (15% Off)</span>
+              </div>
+            </button>
+            <button class="tier-btn" data-tier="village">
+              <span class="tier-icon">🌾</span>
+              <div class="tier-text">
+                <strong>Village / Rural</strong>
+                <span>Outskirts & Rural Camps (25% Off)</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Select Pet Type & Size -->
+        <div class="customizer-col mt-4">
+          <div class="pet-size-row">
+            <div>
+              <label class="customizer-label"><i data-lucide="dog"></i> 2. Pet Size / Breed Category:</label>
+              <div class="size-pill-group">
+                <button class="size-pill active" data-size="small">Small (0-10 kg) • e.g. Shih-Tzu, Pug</button>
+                <button class="size-pill" data-size="medium">Medium (10-25 kg) • e.g. Beagle, Cocker</button>
+                <button class="size-pill" data-size="large">Large (25+ kg) • e.g. Labrador, Husky, GSD</button>
+                <button class="size-pill" data-size="cat">🐱 Cat / Kitten Spa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dynamic Grooming Packages Grid -->
+      <div class="grooming-packages-grid" id="grooming-packages-container">
+        
+        <!-- Package 1: Basic Bath & Blowdry -->
+        <div class="grooming-card" data-base="799">
+          <div class="g-card-badge">ESSENTIAL CARE</div>
+          <h3 class="g-title">Hydro-Bath & Fluff Dry</h3>
+          <p class="g-desc">Deep conditioning wash with organic oatmeal shampoo, anti-tick coat rinse, and blow dry.</p>
+          <div class="g-price-row">
+            <span class="g-price" id="price-bath">₹799</span>
+            <span class="g-dur"><i data-lucide="clock"></i> 45 Mins</span>
+          </div>
+          <ul class="g-services-list">
+            <li><i data-lucide="check" class="text-green"></i> Herbal Anti-Tick & Flea Shampoo</li>
+            <li><i data-lucide="check" class="text-green"></i> High-Velocity Fluff Blow Dry</li>
+            <li><i data-lucide="check" class="text-green"></i> Ear Cleaning & Wax Removal</li>
+            <li><i data-lucide="check" class="text-green"></i> Paw Pad Butter Massage</li>
+          </ul>
+          <button class="btn-primary-orange full-w" onclick="bookGrooming('Hydro-Bath & Fluff Dry')">
+            <i data-lucide="calendar"></i> Book Doorstep Van
+          </button>
+        </div>
+
+        <!-- Package 2: Full Styling & Haircut (Most Popular) -->
+        <div class="grooming-card featured-grooming" data-base="1499">
+          <div class="g-card-badge featured-badge">⭐ MOST POPULAR</div>
+          <h3 class="g-title">Full Body Styling & Spa</h3>
+          <p class="g-desc">Breed-specific hair styling, sanitizing bath, sanitary trim, nail clipping, and perfume spritz.</p>
+          <div class="g-price-row">
+            <span class="g-price" id="price-styling">₹1,499</span>
+            <span class="g-dur"><i data-lucide="clock"></i> 75 Mins</span>
+          </div>
+          <ul class="g-services-list">
+            <li><i data-lucide="check" class="text-green"></i> Everything in Hydro-Bath Package</li>
+            <li><i data-lucide="check" class="text-green"></i> Full Body Breed Haircut & Trimming</li>
+            <li><i data-lucide="check" class="text-green"></i> Sanitary Hygiene & Paw Fur Trim</li>
+            <li><i data-lucide="check" class="text-green"></i> Nail Clipping & Smooth Grinding</li>
+            <li><i data-lucide="check" class="text-green"></i> Teeth Brushing & Mouth Spray</li>
+          </ul>
+          <button class="btn-primary-orange full-w" onclick="bookGrooming('Full Body Styling & Spa')">
+            <i data-lucide="calendar"></i> Book Doorstep Van
+          </button>
+        </div>
+
+        <!-- Package 3: De-Shedding & Deep Therapy -->
+        <div class="grooming-card" data-base="1899">
+          <div class="g-card-badge">SHEDDING DEFENSE</div>
+          <h3 class="g-title">De-Shedding & Anti-Flea Spa</h3>
+          <p class="g-desc">Specialized FURminator undercoat removal reducing home shedding up to 90% + tick treatment.</p>
+          <div class="g-price-row">
+            <span class="g-price" id="price-deshedding">₹1,899</span>
+            <span class="g-dur"><i data-lucide="clock"></i> 90 Mins</span>
+          </div>
+          <ul class="g-services-list">
+            <li><i data-lucide="check" class="text-green"></i> 3-Step Undercoat De-Shedding Treatment</li>
+            <li><i data-lucide="check" class="text-green"></i> Medicated Neem & Aloe Anti-Tick Bath</li>
+            <li><i data-lucide="check" class="text-green"></i> Deep Coat De-Matting Therapy</li>
+            <li><i data-lucide="check" class="text-green"></i> Anal Gland Cleansing (On Request)</li>
+          </ul>
+          <button class="btn-primary-orange full-w" onclick="bookGrooming('De-Shedding & Anti-Flea Spa')">
+            <i data-lucide="calendar"></i> Book Doorstep Van
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: POPULAR PET BREEDS ================= -->
+  <section id="section-breeds" class="breeds-section">
+    <div class="container-custom">
+      <div class="section-header-flex">
+        <div>
+          <span class="section-tag">POPULAR BREEDS</span>
+          <h2 class="section-title">Find Your <span class="text-orange">Favorite Breed</span></h2>
+        </div>
+        <p class="section-desc">Explore healthy, vaccinated family dog breeds raised by ethical breeders.</p>
+      </div>
+
+      <div class="breeds-grid" id="breeds-carousel">
+        <div class="breed-card" onclick="filterByBreedName('Labrador')">
+          <div class="breed-img-wrap">
+            <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?w=400&auto=format&fit=crop&q=80" alt="Labrador">
+          </div>
+          <h3 class="breed-name">Labrador</h3>
+          <span class="breed-tagline">Friendly • Loyal</span>
+          <span class="breed-price-start">₹10,000 - ₹15,000</span>
+        </div>
+
+        <div class="breed-card" onclick="filterByBreedName('Beagle')">
+          <div class="breed-img-wrap">
+            <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=400&auto=format&fit=crop&q=80" alt="Beagle">
+          </div>
+          <h3 class="breed-name">Beagle</h3>
+          <span class="breed-tagline">Playful • Gentle</span>
+          <span class="breed-price-start">₹12,000 - ₹18,000</span>
+        </div>
+
+        <div class="breed-card" onclick="filterByBreedName('Shih-Tzu')">
+          <div class="breed-img-wrap">
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&auto=format&fit=crop&q=80" alt="Shih-Tzu">
+          </div>
+          <h3 class="breed-name">Shih-Tzu</h3>
+          <span class="breed-tagline">Non-Shedding • Flat Friendly</span>
+          <span class="breed-price-start">₹15,000 - ₹20,000</span>
+        </div>
+
+        <div class="breed-card" onclick="filterByBreedName('Golden Retriever')">
+          <div class="breed-img-wrap">
+            <img src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=400&auto=format&fit=crop&q=80" alt="Golden Retriever">
+          </div>
+          <h3 class="breed-name">Golden Retriever</h3>
+          <span class="breed-tagline">Loving • Intelligent</span>
+          <span class="breed-price-start">₹18,000 - ₹25,000</span>
+        </div>
+
+        <div class="breed-card" onclick="filterByBreedName('Pug')">
+          <div class="breed-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&auto=format&fit=crop&q=80" alt="Pug">
+          </div>
+          <h3 class="breed-name">Pug</h3>
+          <span class="breed-tagline">Affectionate • Calm</span>
+          <span class="breed-price-start">₹8,000 - ₹12,000</span>
+        </div>
+
+        <div class="breed-card" onclick="filterByBreedName('Siberian Husky')">
+          <div class="breed-img-wrap">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&auto=format&fit=crop&q=80" alt="Siberian Husky">
+          </div>
+          <h3 class="breed-name">Siberian Husky</h3>
+          <span class="breed-tagline">Majestic • Energetic</span>
+          <span class="breed-price-start">₹18,000 - ₹30,000</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: AVAILABLE PUPPIES DIRECTORY ================= -->
+  <section id="section-puppies" class="puppies-directory-section">
+    <div class="container-custom">
+      <div class="section-header-center">
+        <span class="section-tag">LIVE PUPPY DIRECTORY</span>
+        <h2 class="section-title">Explore Verified <span class="text-orange">Puppies for Sale</span></h2>
+        <p class="section-desc-center">All puppies include veterinary physical exam, vaccination record, and microchip registration.</p>
+      </div>
+
+      <!-- Filter Category Tabs -->
+      <div class="puppy-filter-tabs">
+        <button class="filter-tab-pill active" data-category="all">All Puppies</button>
+        <button class="filter-tab-pill" data-category="small">Small Sized (Apartment)</button>
+        <button class="filter-tab-pill" data-category="medium">Medium Sized</button>
+        <button class="filter-tab-pill" data-category="large">Large Guard & Family</button>
+        <button class="filter-tab-pill" data-category="kci">KCI Registered Only</button>
+      </div>
+
+      <!-- Puppy Cards Grid -->
+      <div class="puppies-grid" id="puppies-list-grid">
+        <!-- Rendered by js/app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5: 2026 PRICE GUIDE & EMI CALCULATOR ================= -->
+  <section id="section-price-guide" class="price-guide-section">
+    <div class="container-custom">
+      <div class="section-header-center">
+        <span class="section-tag">2026 PRICE BREAKDOWN</span>
+        <h2 class="section-title">Puppy and Dog <span class="text-orange">Prices in India</span></h2>
+        <p class="section-desc-center">Competitive pricing reflecting superior breeding health, vaccination status, and purebred documentation.</p>
+      </div>
+
+      <div class="price-guide-grid">
+        <!-- Table Column -->
+        <div class="price-table-card">
+          <div class="table-header-row">
+            <span class="th-title">Dog Breed</span>
+            <span class="th-avg">Price Range (INR)</span>
+            <span class="th-action">Action</span>
+          </div>
+
+          <div class="price-table-rows">
+            <div class="table-row-item">
+              <div class="breed-cell">
+                <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?w=80&auto=format&fit=crop&q=80" alt="Labrador">
+                <div><strong>Labrador Retriever</strong><span class="cell-sub">Family Friendly</span></div>
+              </div>
+              <div class="price-cell">₹10,000 - ₹15,000</div>
+              <button class="table-view-btn" onclick="filterByBreedName('Labrador')">View Puppies</button>
+            </div>
+
+            <div class="table-row-item">
+              <div class="breed-cell">
+                <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=80&auto=format&fit=crop&q=80" alt="Beagle">
+                <div><strong>Beagle</strong><span class="cell-sub">Compact & Gentle</span></div>
+              </div>
+              <div class="price-cell">₹12,000 - ₹18,000</div>
+              <button class="table-view-btn" onclick="filterByBreedName('Beagle')">View Puppies</button>
+            </div>
+
+            <div class="table-row-item">
+              <div class="breed-cell">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=80&auto=format&fit=crop&q=80" alt="Shih-Tzu">
+                <div><strong>Shih-Tzu</strong><span class="cell-sub">Hypoallergenic</span></div>
+              </div>
+              <div class="price-cell">₹15,000 - ₹20,000</div>
+              <button class="table-view-btn" onclick="filterByBreedName('Shih-Tzu')">View Puppies</button>
+            </div>
+
+            <div class="table-row-item">
+              <div class="breed-cell">
+                <img src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=80&auto=format&fit=crop&q=80" alt="Golden Retriever">
+                <div><strong>Golden Retriever</strong><span class="cell-sub">Devoted & Loving</span></div>
+              </div>
+              <div class="price-cell">₹18,000 - ₹25,000</div>
+              <button class="table-view-btn" onclick="filterByBreedName('Golden Retriever')">View Puppies</button>
+            </div>
+
+            <div class="table-row-item">
+              <div class="breed-cell">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=80&auto=format&fit=crop&q=80" alt="Pug">
+                <div><strong>Pug</strong><span class="cell-sub">Calm Lap Dog</span></div>
+              </div>
+              <div class="price-cell">₹8,000 - ₹12,000</div>
+              <button class="table-view-btn" onclick="filterByBreedName('Pug')">View Puppies</button>
+            </div>
+
+            <div class="table-row-item">
+              <div class="breed-cell">
+                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=80&auto=format&fit=crop&q=80" alt="Siberian Husky">
+                <div><strong>Siberian Husky</strong><span class="cell-sub">High Energy & Vocal</span></div>
+              </div>
+              <div class="price-cell">₹18,000 - ₹30,000</div>
+              <button class="table-view-btn" onclick="filterByBreedName('Siberian Husky')">View Puppies</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMI Calculator -->
+        <div class="emi-calculator-card">
+          <div class="emi-badge"><i data-lucide="sparkles"></i> 0% DOWNPAYMENT</div>
+          <h3>Puppy EMI Calculator</h3>
+          <p class="emi-subtext">Bring your furry companion home without upfront financial stress.</p>
+
+          <div class="emi-input-group">
+            <div class="slider-label-row">
+              <span>Adoption Budget</span>
+              <strong id="emi-budget-display">₹15,000</strong>
+            </div>
+            <input type="range" id="emi-budget-slider" min="8000" max="60000" step="1000" value="15000" class="emi-slider">
+          </div>
+
+          <div class="emi-tenure-group">
+            <label>Select Tenure (Months)</label>
+            <div class="tenure-pills">
+              <button class="tenure-pill" data-months="3">3 Mos</button>
+              <button class="tenure-pill active" data-months="6">6 Mos</button>
+              <button class="tenure-pill" data-months="9">9 Mos</button>
+              <button class="tenure-pill" data-months="12">12 Mos</button>
+            </div>
+          </div>
+
+          <div class="emi-output-box">
+            <span class="emi-est-label">Estimated Monthly EMI</span>
+            <div class="emi-est-amount" id="emi-monthly-amount">₹2,500 / month</div>
+            <span class="emi-est-sub">Instant WhatsApp Approval • 0 Hidden Fees</span>
+          </div>
+
+          <button class="btn-primary-orange full-w" id="btn-apply-emi">
+            <i data-lucide="credit-card"></i> Apply for EMI via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: PET CARE & ACCESSORIES SHOP (MOBILE-OPTIMIZED) ================= -->
+  <section id="section-shop" class="pet-shop-section">
+    <div class="container-custom">
+      <div class="section-header-flex">
+        <div>
+          <span class="section-tag">PET ACCESSORIES & FOOD</span>
+          <h2 class="section-title">Essential Pet Food & <span class="text-orange">Care Accessories</span></h2>
+        </div>
+        <p class="section-desc">Vet-recommended starter food, grooming kits, orthopedic beds, and toys with quick doorstep dispatch on phone.</p>
+      </div>
+
+      <!-- Shop Products Grid -->
+      <div class="shop-products-grid">
+        
+        <!-- Item 1 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&auto=format&fit=crop&q=80" alt="Royal Canin Puppy Food">
+          </div>
+          <div class="product-info">
+            <span class="prod-cat">Nutrition</span>
+            <h4 class="prod-name">Royal Canin Maxi Puppy Food (4kg)</h4>
+            <div class="prod-price-row">
+              <span class="prod-price">₹2,850</span>
+              <button class="add-cart-btn" onclick="addToCart('Royal Canin Maxi Puppy (4kg)', 2850, 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=400&auto=format&fit=crop&q=80')">
+                <i data-lucide="plus"></i> Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=400&auto=format&fit=crop&q=80" alt="Orthopedic Velvet Dog Bed">
+          </div>
+          <div class="product-info">
+            <span class="prod-cat">Comfort</span>
+            <h4 class="prod-name">Orthopedic Memory Foam Pet Bed (L)</h4>
+            <div class="prod-price-row">
+              <span class="prod-price">₹1,999</span>
+              <button class="add-cart-btn" onclick="addToCart('Orthopedic Memory Foam Bed', 1999, 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?w=400&auto=format&fit=crop&q=80')">
+                <i data-lucide="plus"></i> Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&auto=format&fit=crop&q=80" alt="Complete Puppy Grooming Kit">
+          </div>
+          <div class="product-info">
+            <span class="prod-cat">Grooming</span>
+            <h4 class="prod-name">Pro Puppy Grooming & Brush Set</h4>
+            <div class="prod-price-row">
+              <span class="prod-price">₹1,249</span>
+              <button class="add-cart-btn" onclick="addToCart('Pro Grooming & Brush Set', 1249, 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&auto=format&fit=crop&q=80')">
+                <i data-lucide="plus"></i> Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400&auto=format&fit=crop&q=80" alt="Teething Chew Toy Set">
+          </div>
+          <div class="product-info">
+            <span class="prod-cat">Toys</span>
+            <h4 class="prod-name">Natural Rubber Teething Chew Set</h4>
+            <div class="prod-price-row">
+              <span class="prod-price">₹799</span>
+              <button class="add-cart-btn" onclick="addToCart('Rubber Teething Chew Set', 799, 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=400&auto=format&fit=crop&q=80')">
+                <i data-lucide="plus"></i> Add to Bag
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 7: WHY CHOOSE EATNTREAT ================= -->
+  <section id="section-why-us" class="benefits-section">
+    <div class="container-custom">
+      <div class="section-header-center">
+        <span class="section-tag">WHY CHOOSE EATNTREAT</span>
+        <h2 class="section-title">Your Trusted Partner in <span class="text-orange">Pet Parenthood & Treats</span></h2>
+        <p class="section-desc-center">Zero compromise on pet nutrition, certified humane breeding ethics, and salon-grade grooming.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card ent-benefit-card">
+          <div class="benefit-icon-box green"><i data-lucide="shield-check"></i></div>
+          <h3>Healthy, Purebred Puppies</h3>
+          <p>Vaccinated, dewormed, and microchipped puppies from verified ethical home breeders.</p>
+        </div>
+
+        <div class="benefit-card ent-benefit-card">
+          <div class="benefit-icon-box orange"><i data-lucide="cookie"></i></div>
+          <h3>Oven-Baked Gourmet Treats</h3>
+          <p>100% natural, preservative-free pet biscuits, protein bites, and dental chews.</p>
+        </div>
+
+        <div class="benefit-card ent-benefit-card">
+          <div class="benefit-icon-box blue"><i data-lucide="scissors"></i></div>
+          <h3>Customized Grooming Rates</h3>
+          <p>Dynamic doorstep salon van pricing tailored for Metros, Towns, and Rural areas.</p>
+        </div>
+
+        <div class="benefit-card ent-benefit-card">
+          <div class="benefit-icon-box purple"><i data-lucide="truck"></i></div>
+          <h3>Doorstep AC Transit</h3>
+          <p>Climate-controlled sanitized pet transport directly to your doorstep across India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container-custom">
+      <div class="footer-top-grid">
+        <div class="footer-col brand-col">
+          <div class="gf-brand-logo ent-brand-logo footer-logo">
+            <span class="ent-logo-text text-white">eat<span class="ent-logo-n">N</span>treat</span>
+            <span class="ent-logo-dot"></span>
+          </div>
+          <p class="footer-tagline-text">India's favorite destination for healthy purebred puppies, dynamic doorstep pet grooming, and vet-approved gourmet pet treats.</p>
+          <div class="footer-contact-info">
+            <div class="f-contact-item"><i data-lucide="map-pin"></i> Metros, Towns & Villages Across India</div>
+            <div class="f-contact-item"><i data-lucide="phone"></i> +91 87796 92292</div>
+            <div class="f-contact-item"><i data-lucide="mail"></i> care@eatntreat.in</div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Grooming by Area</h4>
+          <a href="#section-grooming">Metro Cities Grooming</a>
+          <a href="#section-grooming">Towns & Tier-2 Grooming</a>
+          <a href="#section-grooming">Village & Rural Camps</a>
+          <a href="#section-grooming">Cat & Kitten Spa</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Puppies & Breeds</h4>
+          <a href="#section-puppies" onclick="filterByBreedName('Labrador')">Labrador Puppies</a>
+          <a href="#section-puppies" onclick="filterByBreedName('Beagle')">Beagle Puppies</a>
+          <a href="#section-puppies" onclick="filterByBreedName('Shih-Tzu')">Shih-Tzu Puppies</a>
+          <a href="#section-puppies" onclick="filterByBreedName('Golden Retriever')">Golden Retriever</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Gourmet Treats & Care</h4>
+          <a href="#section-shop">Organic Puppy Food</a>
+          <a href="#section-shop">Teething Chews & Biscuits</a>
+          <a href="#section-shop">Orthopedic Pet Beds</a>
+          <a href="#section-price-guide">Zero Downpayment EMI</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>© 2026 eatNtreat India Pvt Ltd. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="safe-badge">🛡️ 100% Ethical Breeding</span>
+          <span class="safe-badge">🍖 100% Natural Pet Treats</span>
+          <span class="safe-badge">✂️ Sanitized Grooming Vans</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= PET PROFILE MODAL ================= -->
+  <div class="modal-backdrop" id="pet-details-modal">
+    <div class="pet-modal-dialog">
+      <button class="modal-close-btn" id="btn-close-pet-modal"><i data-lucide="x"></i></button>
+      <div class="pet-modal-grid">
+        <div class="pet-modal-img-wrap">
+          <img src="" alt="Pet Preview" id="modal-pet-img">
+          <span class="modal-kci-badge" id="modal-kci-pill"><i data-lucide="award"></i> KCI Certified</span>
+        </div>
+        <div class="pet-modal-body">
+          <div class="pet-modal-header">
+            <div>
+              <h3 class="modal-pet-name" id="modal-pet-name">Snoopy</h3>
+              <span class="modal-pet-breed" id="modal-pet-breed">Beagle • Male</span>
+            </div>
+            <span class="modal-pet-price" id="modal-pet-price">₹15,000</span>
+          </div>
+          <div class="pet-specs-grid">
+            <div class="spec-box"><span class="spec-t">Age</span><strong id="modal-pet-age">7 Weeks</strong></div>
+            <div class="spec-box"><span class="spec-t">Gender</span><strong id="modal-pet-gender">Male</strong></div>
+            <div class="spec-box"><span class="spec-t">Vaccination</span><strong class="text-green" id="modal-pet-vac">Done</strong></div>
+            <div class="spec-box"><span class="spec-t">Location</span><strong id="modal-pet-loc">Delhi NCR</strong></div>
+          </div>
+          <div class="pet-modal-perks">
+            <div class="perk-row"><i data-lucide="check-circle-2" class="text-green"></i> 100% Purebred Lineage Certificate</div>
+            <div class="perk-row"><i data-lucide="check-circle-2" class="text-green"></i> 3 Months Free Vet & Nutritionist Support</div>
+            <div class="perk-row"><i data-lucide="check-circle-2" class="text-green"></i> AC Doorstep Delivery to City/Town/Village</div>
+          </div>
+          <div class="modal-action-row">
+            <button class="btn-primary-orange full-w" id="btn-book-pet">
+              <i data-lucide="heart"></i> Book Puppy on WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MOBILE-READY CART DRAWER ================= -->
+  <div class="modal-backdrop" id="cart-drawer-modal">
+    <div class="cart-drawer-panel">
+      <div class="drawer-header">
+        <h3><i data-lucide="shopping-bag"></i> Your Pet Bag</h3>
+        <button class="modal-close-btn" id="btn-close-cart"><i data-lucide="x"></i></button>
+      </div>
+      <div class="drawer-body" id="cart-items-container">
+        <!-- Injected via js/app.js -->
+      </div>
+      <div class="drawer-footer">
+        <div class="cart-total-row">
+          <span>Subtotal:</span>
+          <span class="cart-total-price" id="cart-total-val">₹0</span>
+        </div>
+        <button class="btn-primary-orange full-w" id="btn-checkout">
+          <span>Checkout via WhatsApp</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
