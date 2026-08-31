@@ -16,7 +16,2621 @@
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+/* ==========================================================================
+   GOODFURS INDIA — PET SHOP & ADOPTION PLATFORM STYLESHEET
+   Matching https://goodfurs.in/ Design System
+   ========================================================================== */
+
+:root {
+  /* Vibrant & Luxury Palette */
+  --primary-orange: #FF6B00;
+  --primary-orange-hover: #E65A00;
+  --primary-orange-light: #FFF4EC;
+  --primary-orange-glow: rgba(255, 107, 0, 0.35);
+  --primary-gradient: linear-gradient(135deg, #FF7E1D 0%, #FF5500 100%);
+  --primary-gradient-warm: linear-gradient(135deg, #FFF6F0 0%, #FFE9DC 100%);
+
+  --bg-cream: #FDFBF8;
+  --bg-cream-card: #F7F3EE;
+  --bg-white: #FFFFFF;
+
+  --text-dark: #0A1118;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+  --accent-green: #10B981;
+  --accent-green-bg: #ECFDF5;
+  --accent-green-glow: rgba(16, 185, 129, 0.25);
+  
+  --accent-blue: #0EA5E9;
+  --accent-blue-bg: #F0F9FF;
+
+  --accent-purple: #8B5CF6;
+  --accent-purple-bg: #F5F3FF;
+
+  --accent-gold: #F59E0B;
+  --border-light: rgba(0, 0, 0, 0.06);
+  --border-card: #EAE6E1;
+  --border-subtle: #F1ECE7;
+
+  /* Typography */
+  --font-heading: 'Outfit', 'Fredoka', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Shadows & Radii */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 4px 14px rgba(10, 17, 24, 0.04);
+  --shadow-md: 0 12px 30px rgba(10, 17, 24, 0.07);
+  --shadow-lg: 0 24px 50px rgba(10, 17, 24, 0.1);
+  --shadow-orange: 0 10px 28px rgba(255, 107, 0, 0.35);
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Reset & Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-cream);
+  color: var(--text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Luxury Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #E2DBD4;
+  border-radius: 999px;
+  border: 2px solid var(--bg-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-orange);
+}
+
+.container-custom {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.text-orange { color: var(--primary-orange) !important; }
+.text-green { color: var(--accent-green) !important; }
+.text-yellow { color: var(--accent-gold) !important; }
+.fill-gold { fill: var(--accent-gold) !important; color: var(--accent-gold) !important; }
+.full-w { width: 100%; }
+
+/* ==========================================================================
+   TOP ANNOUNCEMENT BAR (LUXURY SLEEK)
+   ========================================================================== */
+.top-announcement-bar {
+  background: linear-gradient(90deg, #0A1118 0%, #15222E 50%, #0A1118 100%);
+  color: #FFFFFF;
+  font-size: 13px;
+  padding: 9px 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.announcement-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.announcement-badge {
+  background: var(--primary-gradient);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.4px;
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.4);
+}
+.announcement-link {
+  color: var(--primary-orange);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.2s ease;
+}
+.announcement-link:hover { transform: translateX(3px); color: #FF9447; }
+
+/* ==========================================================================
+   MAIN HEADER NAVIGATION (EXACT GOODFURS REPLICA)
+   ========================================================================== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #FAF7F2;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  padding: 12px 0;
+}
+
+.gf-exact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Left Cluster: [🔍] [Delhi NCR ⌵] [👤] GOODFURS° */
+.header-left-cluster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gf-search-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E293B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gf-search-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--primary-orange);
+}
+.gf-search-icon-btn svg { width: 20px; height: 20px; }
+
+/* Location Pill: [ Delhi NCR ⌵ ] */
+.gf-location-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1.5px solid #1E293B;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: #1E293B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gf-location-pill:hover {
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+  background: #FFFFFF;
+}
+.gf-location-pill .chevron-sm { width: 14px; height: 14px; }
+
+/* Profile Circle Button: [👤] */
+.gf-profile-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid #1E293B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E293B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gf-profile-btn:hover {
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+  background: #FFFFFF;
+  transform: scale(1.05);
+}
+.gf-profile-btn svg { width: 18px; height: 18px; }
+
+/* Brand Logo: eatNtreat° (With Smooth Playful Motion) */
+.gf-brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+  position: relative;
+  margin-left: 6px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.gf-brand-logo:hover {
+  transform: scale(1.04);
+}
+
+.ent-brand-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.ent-logo-text {
+  font-family: 'Outfit', 'Fredoka', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #0F172A;
+  line-height: 1;
+}
+.ent-logo-text.text-white { color: #FFFFFF !important; }
+
+/* Glowing & Wobbling 'N' */
+.ent-logo-n {
+  color: #FF6B00;
+  font-family: 'Fredoka', 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 31px;
+  display: inline-block;
+  margin: 0 1px;
+  text-shadow: 0 2px 12px rgba(255, 107, 0, 0.4);
+  animation: treatWiggle 4s ease-in-out infinite;
+}
+@keyframes treatWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-8deg) scale(1.1); }
+  75% { transform: rotate(6deg) scale(1.08); }
+}
+
+.ent-logo-dot {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #FF7E1D 0%, #FF5500 100%);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 2px;
+  transform: translateY(-9px);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.8);
+  animation: pulseDotGlow 2s ease-in-out infinite alternate;
+}
+@keyframes pulseDotGlow {
+  from { transform: translateY(-9px) scale(0.9); opacity: 0.8; }
+  to { transform: translateY(-9px) scale(1.25); opacity: 1; box-shadow: 0 0 16px rgba(255, 107, 0, 1); }
+}
+
+/* Nav Link with Treat Motion */
+.ent-treats-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #FF6B00 !important;
+  background: var(--primary-orange-light);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  transition: all 0.25s ease;
+}
+.ent-treats-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.25);
+}
+.ent-treats-nav svg { width: 15px; height: 15px; animation: treatBounce 3s infinite; }
+@keyframes treatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px) rotate(-10deg); }
+}
+
+/* Center & Right Navigation Menu */
+.gf-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.gf-nav-link {
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: #1E293B;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.gf-nav-link:hover, .gf-nav-link.active {
+  color: #E06A26;
+}
+
+/* Hero Ambient Particles (Delightful Soft Motion) */
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+  opacity: 0.35;
+}
+.particle-1 {
+  width: 250px;
+  height: 250px;
+  background: #FFAA6C;
+  top: 10%;
+  left: 20%;
+  animation: floatParticle 8s ease-in-out infinite alternate;
+}
+.particle-2 {
+  width: 200px;
+  height: 200px;
+  background: #FFD2B2;
+  bottom: 15%;
+  right: 15%;
+  animation: floatParticle 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes floatParticle {
+  from { transform: translateY(0px) translateX(0px); }
+  to { transform: translateY(-25px) translateX(20px); }
+}
+
+.ent-motion-btn {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.ent-motion-btn:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+}
+
+/* Search Dropdown Bar */
+.gf-search-dropdown-bar {
+  display: none;
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 12px 0;
+  box-shadow: var(--shadow-sm);
+  animation: slideDown 0.25s ease;
+}
+.gf-search-dropdown-bar.active { display: block; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.gf-search-inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.search-inner-icon {
+  position: absolute;
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+}
+.gf-search-inner input {
+  width: 100%;
+  padding: 12px 48px 12px 48px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-card);
+  font-size: 14px;
+  outline: none;
+}
+.gf-search-inner input:focus { border-color: var(--primary-orange); }
+.search-close-x {
+  position: absolute;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   AUTH / SIGN IN MODAL (EXACT MATCH TO IMAGE 2)
+   ========================================================================== */
+.gf-auth-card {
+  position: relative;
+  background: #FFFFFF;
+  max-width: 460px;
+  width: 100%;
+  border-radius: 24px;
+  padding: 42px 36px 36px 36px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.25);
+  animation: popModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.gf-auth-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E293B;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.gf-auth-close-btn:hover { background: #F1F5F9; }
+.gf-auth-close-btn svg { width: 20px; height: 20px; }
+
+.gf-auth-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #0F172A;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.gf-auth-subtitle {
+  font-size: 13px;
+  color: #64748B;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.gf-form-group {
+  margin-bottom: 16px;
+}
+.gf-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+.gf-form-group input {
+  width: 100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #0F172A;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.gf-form-group input::placeholder { color: #94A3B8; }
+.gf-form-group input:focus {
+  border-color: #D97334;
+  box-shadow: 0 0 0 3px rgba(217, 115, 52, 0.15);
+}
+
+.gf-btn-signin {
+  width: 100%;
+  height: 48px;
+  background: #D97334;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 4px 14px rgba(217, 115, 52, 0.3);
+  transition: all 0.2s ease;
+}
+.gf-btn-signin:hover {
+  background: #C46022;
+  transform: translateY(-1px);
+}
+
+.gf-auth-forgot-row {
+  text-align: right;
+  margin-top: 10px;
+}
+.gf-forgot-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+  text-decoration: none;
+}
+.gf-forgot-link:hover { text-decoration: underline; color: #D97334; }
+
+.gf-btn-google {
+  width: 100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F172A;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.2s ease;
+}
+.gf-btn-google:hover {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+}
+.google-svg-icon { width: 18px; height: 18px; }
+
+.gf-auth-switch-row {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #64748B;
+}
+.gf-orange-link {
+  color: #D97334;
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+.gf-orange-link:hover { text-decoration: underline; }
+
+.gf-auth-disclaimer {
+  text-align: center;
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+.gf-auth-disclaimer a {
+  color: #D97334;
+  text-decoration: underline;
+}
+.nav-item {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-body);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.nav-item:hover, .nav-item.active {
+  color: var(--primary-orange);
+  background: var(--primary-orange-light);
+}
+
+/* Nav Actions */
+.nav-utility-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* City Location Dropdown */
+.location-dropdown { position: relative; }
+.location-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #F8FAFC;
+  border: 1px solid var(--border-light);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.location-btn:hover { border-color: var(--primary-orange); }
+.location-btn svg { width: 14px; height: 14px; color: var(--primary-orange); }
+.chevron-sm { width: 12px !important; height: 12px !important; color: var(--text-muted) !important; }
+
+.location-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 180px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 110;
+}
+.location-menu.active { display: flex; }
+.location-menu-header { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--text-muted); padding: 6px 10px; }
+.loc-option {
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+.loc-option:hover, .loc-option.active { background: var(--primary-orange-light); color: var(--primary-orange); font-weight: 700; }
+
+.hotline-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-green-bg);
+  color: var(--accent-green);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+.hotline-btn:hover { background: #BBF7D0; transform: translateY(-1px); }
+.hotline-btn svg { width: 14px; height: 14px; }
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-dark);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+}
+.mobile-menu-btn svg { width: 26px; height: 26px; }
+
+/* Mobile Slide-In Navigation Drawer */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 17, 24, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 300;
+  display: none;
+}
+.mobile-drawer-backdrop.active { display: block; }
+
+.mobile-drawer-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 320px;
+  background: #FFFFFF;
+  z-index: 310;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  animation: slideDrawer 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes slideDrawer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.mobile-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.mobile-search-wrap input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  background: #F8FAFC;
+  outline: none;
+}
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  overflow-y: auto;
+}
+.mob-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.mob-link svg { width: 18px; height: 18px; color: var(--text-muted); }
+.mob-link:hover, .mob-link.active {
+  background: var(--primary-orange-light);
+  color: var(--primary-orange);
+}
+.mob-link:hover svg, .mob-link.active svg { color: var(--primary-orange); }
+
+.mobile-drawer-footer {
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.highlight-nav {
+  color: var(--primary-orange) !important;
+  background: var(--primary-orange-light);
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   DYNAMIC LOCATION-BASED PET GROOMING (CITIES, TOWNS & VILLAGES)
+   ========================================================================== */
+.grooming-section {
+  padding: 90px 0;
+  background: #FFFFFF;
+}
+
+.grooming-customizer-box {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 44px;
+  box-shadow: var(--shadow-sm);
+}
+.customizer-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.customizer-label svg { width: 16px; height: 16px; color: var(--primary-orange); }
+
+.tier-toggle-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.tier-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 2px solid var(--border-card);
+  border-radius: 16px;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.tier-btn:hover { border-color: var(--primary-orange); transform: translateY(-2px); }
+.tier-btn.active {
+  border-color: var(--primary-orange);
+  background: var(--primary-orange-light);
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.15);
+}
+.tier-icon { font-size: 24px; }
+.tier-text strong { display: block; font-size: 14px; font-weight: 800; color: var(--text-dark); }
+.tier-text span { display: block; font-size: 11px; color: var(--text-muted); }
+
+.size-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.size-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.size-pill:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
+.size-pill.active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.3);
+}
+
+.grooming-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.grooming-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-card);
+  border-radius: 26px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.grooming-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-orange);
+  box-shadow: 0 20px 40px rgba(10, 17, 24, 0.08);
+  background: #FFFFFF;
+}
+.featured-grooming {
+  background: #FFFFFF;
+  border: 2px solid var(--primary-orange);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.15);
+}
+
+.g-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--primary-orange-light);
+  color: var(--primary-orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.featured-badge {
+  background: var(--primary-gradient);
+  color: #FFFFFF;
+}
+
+.g-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.g-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.g-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 20px;
+}
+.g-price {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--primary-orange);
+  font-family: var(--font-heading);
+}
+.g-dur {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.g-dur svg { width: 14px; height: 14px; }
+
+.g-services-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 26px;
+  flex: 1;
+}
+.g-services-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-body);
+}
+.g-services-list li svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ==========================================================================
+   BUTTONS (LUXURY SLEEK)
+   ========================================================================== */
+.btn-primary-orange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--primary-gradient);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.38);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-primary-orange:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(255, 107, 0, 0.5);
+}
+.btn-primary-orange svg { width: 17px; height: 17px; transition: transform 0.2s ease; }
+.btn-primary-orange:hover svg { transform: translateX(3px); }
+
+.btn-secondary-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #FFFFFF;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border-card);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-secondary-white:hover {
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.btn-secondary-white svg { width: 17px; height: 17px; color: var(--primary-orange); }
+
+/* ==========================================================================
+   SECTION 1: HERO
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding: 70px 0 90px 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 107, 0, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 10% 80%, rgba(255, 230, 210, 0.5) 0%, transparent 50%);
+}
+.hero-bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.shape-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+}
+.blob-1 { top: -120px; right: -80px; width: 550px; height: 550px; background: #FFD4BA; }
+.blob-2 { bottom: -80px; left: -120px; width: 450px; height: 450px; background: #FFEADC; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  color: var(--primary-orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(255, 107, 0, 0.08);
+}
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5.2vw, 62px);
+  font-weight: 800;
+  line-height: 1.08;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.highlight-orange {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 34px;
+}
+
+.hero-action-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+}
+
+.hero-trust-strip {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.trust-item { display: flex; align-items: center; gap: 12px; }
+.trust-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--primary-orange-light);
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.12);
+}
+.trust-icon svg { width: 20px; height: 20px; }
+.trust-item strong { display: block; font-size: 13px; font-weight: 800; color: var(--text-dark); }
+.trust-item span { display: block; font-size: 11px; color: var(--text-muted); }
+.trust-divider { width: 1px; height: 36px; background: rgba(0, 0, 0, 0.08); }
+
+/* HERO VISUAL PODIUM (3D FLOATING WITH GLOW) */
+.hero-visual-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero-image-podium {
+  position: relative;
+  width: 100%;
+  max-width: 490px;
+  border-radius: 36px;
+  background: linear-gradient(145deg, #FFF0E4 0%, #FFE2CC 100%);
+  padding: 22px;
+  box-shadow: 0 25px 60px -15px rgba(255, 107, 0, 0.2), 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+.hero-main-pet-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 26px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hero-image-podium:hover .hero-main-pet-img { transform: scale(1.03); }
+
+/* Floating Glass Badges */
+.floating-badge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 12px 18px;
+  border-radius: 999px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  animation: badgeLevitate 6s ease-in-out infinite;
+}
+@keyframes badgeLevitate {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.floating-badge strong { display: block; font-size: 13px; font-weight: 800; color: var(--text-dark); }
+.floating-badge span { display: block; font-size: 11px; color: var(--text-muted); }
+
+.badge-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge-icon-circle svg { width: 18px; height: 18px; }
+.badge-icon-circle.green { background: var(--accent-green-bg); color: var(--accent-green); }
+.badge-icon-circle.orange { background: var(--primary-orange-light); color: var(--primary-orange); }
+.badge-icon-circle.blue { background: var(--accent-blue-bg); color: var(--accent-blue); }
+
+.badge-top-right { top: -15px; right: -25px; animation-delay: 0s; }
+.badge-bottom-left { bottom: 35px; left: -30px; animation-delay: 1.5s; }
+.badge-bottom-right { bottom: -20px; right: 25px; animation-delay: 3s; }
+
+/* ==========================================================================
+   SECTION 2: POPULAR BREEDS (LUXURY CARDS)
+   ========================================================================== */
+.breeds-section {
+  padding: 90px 0;
+  background: #FFFFFF;
+}
+.section-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary-orange);
+  display: block;
+  margin-bottom: 8px;
+}
+.section-tag-light {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  display: block;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 44px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.section-desc {
+  max-width: 480px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.section-header-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 44px auto;
+}
+.section-desc-center {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+.breeds-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.breed-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-card);
+  border-radius: 22px;
+  padding: 18px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.breed-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-orange);
+  box-shadow: 0 16px 36px rgba(255, 107, 0, 0.12);
+  background: #FFFFFF;
+}
+.breed-img-wrap {
+  width: 100%;
+  height: 125px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.breed-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.breed-card:hover .breed-img-wrap img { transform: scale(1.12); }
+.breed-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.breed-tagline {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.breed-price-start {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary-orange);
+  background: var(--primary-orange-light);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 107, 0, 0.15);
+}
+
+/* ==========================================================================
+   SECTION 3: PUPPIES DIRECTORY (LUXURY E-COMMERCE CARDS)
+   ========================================================================== */
+.puppies-directory-section {
+  padding: 100px 0;
+  background: var(--bg-cream-card);
+}
+
+.puppy-filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.filter-tab-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s ease;
+}
+.filter-tab-pill:hover, .filter-tab-pill.active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 6px 18px rgba(255, 107, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.puppies-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.pet-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.pet-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 23, 31, 0.08);
+  border-color: rgba(255, 107, 0, 0.4);
+}
+
+.pet-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+.pet-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.pet-card:hover .pet-card-img { transform: scale(1.09); }
+
+.pet-kci-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(10, 17, 24, 0.88);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.pet-kci-badge svg { width: 13px; height: 13px; color: var(--accent-gold); }
+
+.share-pet-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+.share-pet-btn:hover { background: #FFFFFF; color: var(--primary-orange); transform: scale(1.12); }
+.share-pet-btn svg { width: 16px; height: 16px; }
+
+.pet-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.pet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.pet-card-name {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.pet-card-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary-orange);
+}
+
+.pet-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.meta-tag {
+  background: #F1F5F9;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--text-body);
+}
+
+.pet-cert-strip {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.cert-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+.cert-pill.purebred { background: var(--accent-green-bg); color: var(--accent-green); }
+.cert-pill.health { background: var(--accent-blue-bg); color: var(--accent-blue); }
+.cert-pill svg { width: 13px; height: 13px; }
+
+.pet-location-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.pet-location-row svg { width: 14px; height: 14px; color: var(--primary-orange); }
+
+.pet-card-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-light);
+  padding-top: 16px;
+}
+.meet-pet-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--primary-orange-light);
+  color: var(--primary-orange);
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.meet-pet-btn:hover {
+  background: var(--primary-gradient);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.3);
+}
+
+/* ==========================================================================
+   SECTION 4: BREED MATCHER QUIZ (FUTURISTIC / GEN-Z GAMIFIED)
+   ========================================================================== */
+.quiz-section {
+  padding: 90px 0;
+  background: #FFFFFF;
+}
+.quiz-card-wrapper {
+  background: linear-gradient(145deg, #0A1118 0%, #15222E 50%, #0A1118 100%);
+  border-radius: var(--radius-xl);
+  padding: 60px 48px;
+  color: #FFFFFF;
+  box-shadow: 0 30px 60px -12px rgba(10, 17, 24, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.quiz-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.quiz-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 44px auto;
+  position: relative;
+  z-index: 2;
+}
+.quiz-title {
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+.quiz-desc { font-size: 15px; color: #94A3B8; line-height: 1.7; }
+
+.quiz-step { display: none; position: relative; z-index: 2; }
+.quiz-step.active { display: block; animation: fadeIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.step-question {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 30px;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quiz-opt-btn {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 30px 22px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.quiz-opt-btn:hover {
+  background: rgba(255, 107, 0, 0.18);
+  border-color: var(--primary-orange);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255, 107, 0, 0.25);
+}
+.quiz-opt-btn svg { width: 36px; height: 36px; color: var(--primary-orange); margin-bottom: 6px; }
+.quiz-opt-btn strong { font-size: 16px; font-weight: 800; }
+.quiz-opt-btn span { font-size: 12px; color: #94A3B8; line-height: 1.5; }
+
+/* Result Box */
+.result-box {
+  max-width: 620px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  border: 2px solid var(--primary-orange);
+  border-radius: 28px;
+  padding: 44px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(255, 107, 0, 0.2);
+}
+.match-badge {
+  background: var(--accent-green);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 16px;
+  border-radius: 999px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+.result-breed-title {
+  font-family: var(--font-heading);
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--primary-orange);
+  margin-bottom: 12px;
+}
+.result-breed-desc {
+  font-size: 16px;
+  color: #CBD5E1;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.result-action-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   SECTION 5: BENEFITS (WHY CHOOSE GOOD FURS BENTO GRID)
+   ========================================================================== */
+.benefits-section {
+  padding: 100px 0;
+  background: var(--bg-cream);
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.benefit-card {
+  background: #FFFFFF;
+  border-radius: 28px;
+  border: 1px solid var(--border-card);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+}
+.benefit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(10, 17, 24, 0.08);
+  border-color: rgba(255, 107, 0, 0.4);
+}
+.benefit-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+}
+.benefit-icon-box svg { width: 30px; height: 30px; }
+.benefit-icon-box.orange { background: var(--primary-orange-light); color: var(--primary-orange); }
+.benefit-icon-box.green { background: var(--accent-green-bg); color: var(--accent-green); }
+.benefit-icon-box.blue { background: var(--accent-blue-bg); color: var(--accent-blue); }
+.benefit-icon-box.purple { background: var(--accent-purple-bg); color: var(--accent-purple); }
+
+.benefit-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.benefit-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   SECTION 6: PET CARE SHOP
+   ========================================================================== */
+.pet-shop-section {
+  padding: 100px 0;
+  background: #FFFFFF;
+}
+.shop-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.product-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-card);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(10, 17, 24, 0.08);
+  border-color: var(--primary-orange);
+  background: #FFFFFF;
+}
+.product-img-wrap {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.product-card:hover .product-img-wrap img { transform: scale(1.1); }
+.product-info { padding: 22px; }
+.prod-cat { font-size: 11px; font-weight: 800; color: var(--primary-orange); text-transform: uppercase; letter-spacing: 0.8px; }
+.prod-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 6px 0 16px 0;
+  line-height: 1.4;
+}
+.prod-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prod-price { font-size: 20px; font-weight: 800; color: var(--text-dark); }
+.add-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-gradient);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+  transition: all 0.2s ease;
+}
+.add-cart-btn:hover { transform: scale(1.06); }
+.add-cart-btn svg { width: 15px; height: 15px; }
+
+/* ==========================================================================
+   SECTION 7: REVIEWS
+   ========================================================================== */
+.reviews-section {
+  padding: 90px 0;
+  background: var(--bg-cream-card);
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+.review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.review-stars svg { width: 16px; height: 16px; }
+.review-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-body);
+  margin-bottom: 20px;
+  flex: 1;
+  font-style: italic;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 16px;
+}
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-orange);
+}
+.author-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+.author-loc { font-size: 11px; color: var(--text-muted); }
+
+/* ==========================================================================
+   OFFICIAL 2026 PRICE GUIDE & EMI CALCULATOR
+   ========================================================================== */
+.price-guide-section {
+  padding: 90px 0;
+  background: #FFFFFF;
+}
+.price-guide-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.price-table-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.table-header-row {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr 1fr;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.price-table-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.table-row-item {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr 1fr;
+  align-items: center;
+  background: #FFFFFF;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+.table-row-item:hover {
+  border-color: var(--primary-orange);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.breed-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.breed-cell img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.breed-cell strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+.cell-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.price-cell {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-orange);
+}
+.table-view-btn {
+  background: var(--primary-orange-light);
+  color: var(--primary-orange);
+  border: 1px solid rgba(254, 122, 39, 0.2);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.table-view-btn:hover {
+  background: var(--primary-orange);
+  color: #FFFFFF;
+}
+
+.price-factor-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-left: 3px solid var(--primary-orange);
+}
+.price-factor-note svg {
+  width: 16px;
+  height: 16px;
+  color: var(--primary-orange);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* EMI Calculator Card */
+.emi-calculator-card {
+  background: linear-gradient(135deg, #00171F 0%, #0B2533 100%);
+  border-radius: 24px;
+  padding: 32px 28px;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-lg);
+}
+.emi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(254, 122, 39, 0.2);
+  color: var(--primary-orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+.emi-badge svg { width: 12px; height: 12px; }
+.emi-calculator-card h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.emi-subtext {
+  font-size: 13px;
+  color: #94A3B8;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.emi-input-group { margin-bottom: 20px; }
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #CBD5E1;
+  margin-bottom: 10px;
+}
+.slider-label-row strong { font-size: 18px; color: var(--primary-orange); font-weight: 800; }
+.emi-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+.emi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary-orange);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(254, 122, 39, 0.6);
+}
+
+.emi-tenure-group { margin-bottom: 24px; }
+.emi-tenure-group label {
+  display: block;
+  font-size: 12px;
+  color: #94A3B8;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.tenure-pills { display: flex; gap: 8px; }
+.tenure-pill {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tenure-pill:hover, .tenure-pill.active {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+  color: #FFFFFF;
+}
+
+.emi-output-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(254, 122, 39, 0.4);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.emi-est-label { font-size: 11px; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; }
+.emi-est-amount { font-size: 26px; font-weight: 800; color: var(--primary-orange); margin: 4px 0; }
+.emi-est-sub { font-size: 11px; color: #64748B; display: block; }
+
+/* Popular Breed Guides Strip */
+.popular-breed-links-wrapper {
+  background: var(--bg-cream-card);
+  border-radius: 20px;
+  padding: 20px 24px;
+  border: 1px solid var(--border-light);
+}
+.links-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+.breed-links-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.breed-guide-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.breed-guide-pill:hover {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   ONLINE BUYING, DELIVERY & DOCUMENTATION
+   ========================================================================== */
+.online-buying-section {
+  padding: 90px 0;
+  background: var(--bg-cream);
+}
+.delivery-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.step-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  padding: 32px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+.step-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-orange);
+  box-shadow: var(--shadow-md);
+}
+.step-num {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: 900;
+  color: #F1F5F9;
+  font-family: var(--font-heading);
+}
+.step-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--primary-orange-light);
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.step-icon-wrap svg { width: 26px; height: 26px; }
+.step-card h4 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.step-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   WHY ADOPT IN INDIA / RESPONSIBLE BREEDING MISSION
+   ========================================================================== */
+.adoption-mission-section {
+  padding: 0 0 90px 0;
+  background: var(--bg-cream);
+}
+.mission-box-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-left: 6px solid var(--accent-green);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+.mission-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-green-bg);
+  color: var(--accent-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mission-icon svg { width: 32px; height: 32px; }
+.mission-text-content h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.mission-text-content p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.faq-accordion-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.faq-item {
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-cream);
+  transition: all 0.2s ease;
+}
+.faq-item.active { border-color: var(--primary-orange); background: #FFFFFF; }
+.faq-question-btn {
+  width: 100%;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+.faq-question-btn svg { width: 18px; height: 18px; color: var(--primary-orange); transition: transform 0.2s ease; }
+.faq-item.active .faq-question-btn svg { transform: rotate(180deg); }
+
+.faq-answer-content {
+  display: none;
+  padding: 0 20px 20px 20px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.faq-item.active .faq-answer-content { display: block; }
+
+/* ==========================================================================
+   SECTION 9: CTA BANNER
+   ========================================================================== */
+.cta-banner-section {
+  padding: 0 0 90px 0;
+  background: #FFFFFF;
+}
+.cta-banner-card {
+  background: linear-gradient(135deg, #FE7A27 0%, #EA580C 100%);
+  border-radius: 32px;
+  padding: 50px 40px;
+  color: #FFFFFF;
+  text-align: center;
+  box-shadow: var(--shadow-orange);
+}
+.cta-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.cta-banner-card h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.cta-banner-card p {
+  font-size: 16px;
+  max-width: 580px;
+  margin: 0 auto 30px auto;
+  opacity: 0.95;
+}
+.cta-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn-primary-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: var(--primary-orange);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 13px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+.btn-primary-white:hover { transform: translateY(-2px); }
+.btn-primary-white svg { width: 16px; height: 16px; }
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 13px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); }
+.btn-whatsapp svg { width: 16px; height: 16px; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.main-footer {
+  background: var(--text-dark);
+  color: #FFFFFF;
+  padding: 80px 0 30px 0;
+}
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.footer-logo .brand-name { color: #FFFFFF; }
+.footer-tagline-text {
+  font-size: 13px;
+  color: #94A3B8;
+  line-height: 1.65;
+  margin: 14px 0 20px 0;
+  max-width: 320px;
+}
+.footer-contact-info { display: flex; flex-direction: column; gap: 8px; }
+.f-contact-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #CBD5E1; }
+.f-contact-item svg { width: 14px; height: 14px; color: var(--primary-orange); }
+
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: #94A3B8;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover { color: var(--primary-orange); }
+
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  font-size: 12px;
+  color: #64748B;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-badges { display: flex; gap: 16px; }
+.safe-badge { font-size: 12px; color: #94A3B8; }
+
+/* ==========================================================================
+   MODALS & CART DRAWER
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 23, 31, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop.active { display: flex; }
+
+.pet-modal-dialog {
+  position: relative;
+  background: #FFFFFF;
+  max-width: 780px;
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: popModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes popModal {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 23, 31, 0.06);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  cursor: pointer;
+  z-index: 10;
+}
+.modal-close-btn:hover { background: rgba(0, 23, 31, 0.12); }
+.modal-close-btn svg { width: 18px; height: 18px; }
+
+.pet-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+}
+.pet-modal-img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 380px;
+  background: #F1F5F9;
+}
+.pet-modal-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-kci-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--text-dark);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.modal-kci-badge svg { width: 14px; height: 14px; color: var(--accent-gold); }
+
+.pet-modal-body {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+.pet-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 18px;
+}
+.modal-pet-name { font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: var(--text-dark); }
+.modal-pet-breed { font-size: 13px; color: var(--text-muted); }
+.modal-pet-price { font-size: 24px; font-weight: 800; color: var(--primary-orange); }
+
+.pet-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.spec-box {
+  background: var(--bg-cream);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+}
+.spec-t { display: block; font-size: 11px; color: var(--text-muted); }
+.spec-box strong { font-size: 13px; color: var(--text-dark); }
+
+.pet-modal-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.perk-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-body); font-weight: 600; }
+.perk-row svg { width: 15px; height: 15px; }
+
+.modal-action-row {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+/* Slide-out Cart Drawer */
+.cart-drawer-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background: #FFFFFF;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  animation: slideCart 0.3s ease;
+}
+@keyframes slideCart {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 14px;
+}
+.drawer-header h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cart-empty-text {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+.cart-empty-text svg { width: 44px; height: 44px; margin-bottom: 12px; opacity: 0.4; }
+
+.cart-item-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--bg-cream);
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+}
+.cart-item-thumb { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+.cart-item-info h5 { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.cart-item-p { font-size: 12px; font-weight: 800; color: var(--primary-orange); }
+
+.drawer-footer {
+  border-top: 1px solid var(--border-light);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.cart-total-price { font-size: 20px; font-weight: 800; color: var(--primary-orange); }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE-FIRST REFINED)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .header-search-bar { display: none; }
+  .nav-menu { display: none; }
+  .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+  .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .hero-action-row { justify-content: center; }
+  .hero-trust-strip { justify-content: center; flex-wrap: wrap; }
+  .breeds-grid { grid-template-columns: repeat(3, 1fr); }
+  .puppies-grid { grid-template-columns: repeat(2, 1fr); }
+  .price-guide-grid { grid-template-columns: 1fr; }
+  .grooming-packages-grid { grid-template-columns: repeat(2, 1fr); }
+  .tier-toggle-group { grid-template-columns: 1fr; }
+  .shop-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 34px; }
+  .hero-subtitle { font-size: 14px; }
+  .hero-image-podium { max-width: 100%; padding: 14px; }
+  .hero-main-pet-img { height: 320px; border-radius: 18px; }
+  .floating-badge { padding: 8px 12px; }
+  .floating-badge strong { font-size: 11px; }
+  .floating-badge span { font-size: 9px; }
+  
+  .breeds-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .puppies-grid { grid-template-columns: 1fr; }
+  .grooming-packages-grid { grid-template-columns: 1fr; }
+  .shop-products-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .product-info { padding: 14px; }
+  .prod-name { font-size: 14px; margin: 4px 0 10px 0; }
+  .prod-price { font-size: 16px; }
+  .add-cart-btn { padding: 6px 10px; font-size: 11px; }
+  
+  .benefits-grid { grid-template-columns: 1fr; }
+  .quiz-options-grid { grid-template-columns: 1fr; }
+  .pet-modal-grid { grid-template-columns: 1fr; }
+  .pet-modal-img-wrap { min-height: 220px; }
+  .footer-top-grid { grid-template-columns: 1fr; }
+  
+  .hotline-text { display: none; }
+  .hotline-btn { padding: 8px; border-radius: 50%; width: 40px; height: 40px; justify-content: center; }
+  .cart-drawer-panel { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .shop-products-grid { grid-template-columns: 1fr; }
+  .tier-btn { padding: 10px 12px; }
+  .tier-text strong { font-size: 13px; }
+  .size-pill { font-size: 11px; padding: 8px 14px; }
+  .g-price { font-size: 26px; }
+}
+
+</style>
 </head>
 <body>
 
@@ -892,8 +3506,917 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/app.js"></script>
+  <script>
+/**
+ * ============================================================================
+ * EATNTREAT — PUPPIES DATABASE & DIRECTORY CONTROLLER
+ * Live Puppy Listings • Health Certifications • Modal Details • Wishlist
+ * ============================================================================
+ */
 
+// Global Puppies Database
+window.puppiesData = [
+  {
+    id: 'pet-1',
+    name: 'Snoopy',
+    breed: 'Beagle',
+    category: 'medium',
+    gender: 'Male',
+    age: '7 Weeks',
+    price: 15000,
+    priceFormatted: '₹15,000',
+    image: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600&auto=format&fit=crop&q=80',
+    kci: true,
+    location: 'Delhi NCR, Jaipur, Chandigarh',
+    vacStatus: '1st DHPPIL Done',
+    desc: 'Playful, gentle, and food-loving Beagle puppy. Microchipped with champion lineage.'
+  },
+  {
+    id: 'pet-2',
+    name: 'Bruno',
+    breed: 'Labrador',
+    category: 'large',
+    gender: 'Male',
+    age: '7 Weeks',
+    price: 12000,
+    priceFormatted: '₹12,000',
+    image: 'https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?w=600&auto=format&fit=crop&q=80',
+    kci: true,
+    location: 'All India Transit Available',
+    vacStatus: '1st Dose Done',
+    desc: 'Heavy-bone Golden Yellow Labrador with calm, obedient, kid-friendly temperament.'
+  },
+  {
+    id: 'pet-3',
+    name: 'Mochi',
+    breed: 'Shih-Tzu',
+    category: 'small',
+    gender: 'Female',
+    age: '7 Weeks',
+    price: 18000,
+    priceFormatted: '₹18,000',
+    image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&auto=format&fit=crop&q=80',
+    kci: false,
+    location: 'Delhi NCR, Mumbai, Pune',
+    vacStatus: '1st Dose & Dewormed',
+    desc: 'Ultra-cute, non-shedding tri-color Shih-Tzu girl. Ideal for compact apartment living.'
+  },
+  {
+    id: 'pet-4',
+    name: 'Milo',
+    breed: 'Golden Retriever',
+    category: 'large',
+    gender: 'Male',
+    age: '8 Weeks',
+    price: 22000,
+    priceFormatted: '₹22,000',
+    image: 'https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=600&auto=format&fit=crop&q=80',
+    kci: true,
+    location: 'Delhi NCR, Jaipur, Chandigarh',
+    vacStatus: '1st Dose Done',
+    desc: 'Fluffy cream Golden Retriever with loving personality and imported bloodline.'
+  },
+  {
+    id: 'pet-5',
+    name: 'Rex',
+    breed: 'Siberian Husky',
+    category: 'large',
+    gender: 'Male',
+    age: '8 Weeks',
+    price: 25000,
+    priceFormatted: '₹25,000',
+    image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop&q=80',
+    kci: true,
+    location: 'Delhi NCR, Mumbai, Bangalore',
+    vacStatus: '1st & 2nd Dose Done',
+    desc: 'Stunning bi-eyed Siberian Husky with striking coat and energetic, vocal personality.'
+  },
+  {
+    id: 'pet-6',
+    name: 'Oscar',
+    breed: 'Pug',
+    category: 'small',
+    gender: 'Male',
+    age: '7 Weeks',
+    price: 10000,
+    priceFormatted: '₹10,000',
+    image: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&auto=format&fit=crop&q=80',
+    kci: false,
+    location: 'Delhi NCR, Bangalore, Pune',
+    vacStatus: '1st Dose & Dewormed',
+    desc: 'Adorable fawn Pug puppy with gentle, low-maintenance indoor temperament.'
+  },
+  {
+    id: 'pet-7',
+    name: 'Rocky',
+    breed: 'German Shepherd',
+    category: 'large',
+    gender: 'Male',
+    age: '8 Weeks',
+    price: 20000,
+    priceFormatted: '₹20,000',
+    image: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=600&auto=format&fit=crop&q=80',
+    kci: true,
+    location: 'Delhi NCR, Mumbai, Chandigarh',
+    vacStatus: '1st Dose Done & Microchipped',
+    desc: 'Heavy-coat, double-boned German Shepherd puppy with loyal guarding instincts.'
+  },
+  {
+    id: 'pet-8',
+    name: 'Bella',
+    breed: 'Poodle',
+    category: 'small',
+    gender: 'Female',
+    age: '8 Weeks',
+    price: 35000,
+    priceFormatted: '₹35,000',
+    image: 'https://images.unsplash.com/photo-1604848698030-c434ba08ece1?w=600&auto=format&fit=crop&q=80',
+    kci: true,
+    location: 'Delhi NCR, Bangalore, Mumbai',
+    vacStatus: '1st Dose & Dewormed',
+    desc: 'Hypoallergenic apricot Toy Poodle. Highly intelligent, eager to learn, and non-shedding.'
+  }
+];
+
+// Wishlist Set
+window.petWishlist = new Set();
+
+window.toggleWishlist = function(petId, name) {
+  const isWishlisted = window.petWishlist.has(petId);
+  if (isWishlisted) {
+    window.petWishlist.delete(petId);
+    showToast(`Removed ${name} from your Wishlist`);
+  } else {
+    window.petWishlist.add(petId);
+    showToast(`❤️ Added ${name} to your Wishlist!`);
+    if (typeof confetti === 'function') {
+      confetti({ particleCount: 30, spread: 50, origin: { y: 0.7 } });
+    }
+  }
+  const activeTab = document.querySelector('.filter-tab-pill.active')?.dataset.category || 'all';
+  const searchVal = document.getElementById('global-pet-search')?.value || '';
+  renderPuppiesGrid(activeTab, searchVal);
+};
+
+// Toast notification helper
+function showToast(msg) {
+  let toast = document.getElementById('goodfurs-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'goodfurs-toast';
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0A1118;
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 107, 0, 0.4);
+      z-index: 9999;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    `;
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<span style="color:#FF6B00;">🐾</span> ${msg}`;
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => {
+    toast.style.transform = 'translateX(-50%) translateY(100px)';
+  }, 2600);
+}
+
+// Render Puppy Cards (Luxury E-commerce Cards)
+function renderPuppiesGrid(filterCategory = 'all', searchQuery = '') {
+  const container = document.getElementById('puppies-list-grid');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const filtered = window.puppiesData.filter(pet => {
+    const matchesCat = (filterCategory === 'all') || 
+                       (filterCategory === 'kci' ? pet.kci : pet.category === filterCategory);
+    const matchesSearch = !searchQuery || 
+                          pet.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          pet.breed.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          pet.location.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCat && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #64748B;">
+        <i data-lucide="paw-print" style="width: 48px; height: 48px; margin-bottom: 12px; color: #FF6B00;"></i>
+        <h3 style="font-family: var(--font-heading); color: #0A1118; font-size: 22px;">No puppies matched your search</h3>
+        <p style="font-size: 14px;">Try searching for another breed like Beagle, Labrador, Husky, or Shih-Tzu.</p>
+      </div>
+    `;
+    if (window.lucide) window.lucide.createIcons();
+    return;
+  }
+
+  filtered.forEach(pet => {
+    const isWishlisted = window.petWishlist.has(pet.id);
+    const card = document.createElement('div');
+    card.className = 'pet-card';
+    card.innerHTML = `
+      <div class="pet-card-img-wrap">
+        <img src="${pet.image}" alt="${pet.name} ${pet.breed}" class="pet-card-img">
+        ${pet.kci ? `<span class="pet-kci-badge"><i data-lucide="award"></i> KCI Registered</span>` : ''}
+        
+        <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 6px;">
+          <button class="share-pet-btn" style="${isWishlisted ? 'color: #EF4444; background: #FFFFFF;' : ''}" onclick="toggleWishlist('${pet.id}', '${pet.name}')" title="Save to Wishlist">
+            <i data-lucide="heart" style="${isWishlisted ? 'fill: #EF4444;' : ''}"></i>
+          </button>
+          <button class="share-pet-btn" onclick="sharePet('${pet.name}', '${pet.breed}')" title="Share Pet">
+            <i data-lucide="share-2"></i>
+          </button>
+        </div>
+      </div>
+      <div class="pet-card-body">
+        <div class="pet-card-header">
+          <h3 class="pet-card-name">${pet.name}</h3>
+          <span class="pet-card-price">${pet.priceFormatted}</span>
+        </div>
+        <div class="pet-meta-row">
+          <span class="meta-tag">${pet.breed}</span>
+          <span>•</span>
+          <span>${pet.gender}</span>
+          <span>•</span>
+          <span>${pet.age}</span>
+        </div>
+        <div class="pet-cert-strip">
+          <span class="cert-pill purebred"><i data-lucide="shield-check"></i> Purebred</span>
+          <span class="cert-pill health"><i data-lucide="check"></i> 100% Health Checked</span>
+        </div>
+        <div class="pet-location-row">
+          <i data-lucide="map-pin"></i>
+          <span>${pet.location}</span>
+        </div>
+        <div class="pet-card-footer">
+          <button class="meet-pet-btn" onclick="openPetModal('${pet.id}')">
+            <i data-lucide="eye"></i>
+            <span>Meet ${pet.name} (Live Video)</span>
+          </button>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  if (window.lucide) window.lucide.createIcons();
+}
+
+// Global Breed Filter Helper
+window.filterByBreedName = function(breedName) {
+  const searchInput = document.getElementById('global-pet-search');
+  if (searchInput) {
+    searchInput.value = breedName;
+    renderPuppiesGrid('all', breedName);
+  }
+  const section = document.getElementById('section-puppies');
+  if (section) section.scrollIntoView({ behavior: 'smooth' });
+};
+
+// Open Pet Profile Modal
+window.openPetModal = function(petId) {
+  const pet = window.puppiesData.find(p => p.id === petId);
+  if (!pet) return;
+
+  const modal = document.getElementById('pet-details-modal');
+  document.getElementById('modal-pet-img').src = pet.image;
+  document.getElementById('modal-pet-name').textContent = pet.name;
+  document.getElementById('modal-pet-breed').textContent = `${pet.breed} • ${pet.gender} • ${pet.age}`;
+  document.getElementById('modal-pet-price').textContent = pet.priceFormatted;
+  document.getElementById('modal-pet-age').textContent = pet.age;
+  document.getElementById('modal-pet-gender').textContent = pet.gender;
+  document.getElementById('modal-pet-vac').textContent = pet.vacStatus;
+  document.getElementById('modal-pet-loc').textContent = pet.location;
+
+  const kciPill = document.getElementById('modal-kci-pill');
+  if (kciPill) {
+    kciPill.style.display = pet.kci ? 'flex' : 'none';
+  }
+
+  // Hook Book / Inquire Button
+  const bookBtn = document.getElementById('btn-book-pet');
+  if (bookBtn) {
+    bookBtn.onclick = () => {
+      const city = document.getElementById('current-city-label')?.textContent || 'India';
+      const msg = encodeURIComponent(`Hi eatNtreat India! I am interested in adopting ${pet.name} (${pet.breed}, ${pet.priceFormatted}) in ${city}. Please share live video call & vaccination certificate details.`);
+      window.open(`https://wa.me/918779692292?text=${msg}`, '_blank');
+    };
+  }
+
+  if (modal) modal.classList.add('active');
+};
+
+// Share Pet
+window.sharePet = function(name, breed) {
+  if (navigator.share) {
+    navigator.share({
+      title: `Adopt ${name} (${breed}) on eatNtreat`,
+      text: `Check out ${name}, a purebred healthy ${breed} puppy available on eatNtreat India!`,
+      url: window.location.href
+    }).catch(() => {});
+  } else {
+    showToast(`Link copied! Check out ${name} (${breed}) on eatNtreat.`);
+  }
+};
+
+/**
+ * ============================================================================
+ * EATNTREAT — DYNAMIC PET GROOMING CALCULATOR ENGINE
+ * Doorstep Salon Van Rates by City, Town & Village Area Tiers
+ * ============================================================================
+ */
+
+window.currentGroomingTier = 'city'; // 'city' | 'town' | 'village'
+window.currentPetSize = 'small';     // 'small' | 'medium' | 'large' | 'cat'
+
+window.tierMultipliers = {
+  city: 1.0,     // Metro cities (standard base)
+  town: 0.85,    // Tier-2 / Towns (~15% discount)
+  village: 0.75  // Rural / Village camps (~25% discount)
+};
+
+window.sizeMultipliers = {
+  small: 1.0,    // 0-10 kg
+  medium: 1.25,  // 10-25 kg
+  large: 1.5,    // 25+ kg
+  cat: 0.95      // Cat / Kitten
+};
+
+window.updateGroomingPrices = function() {
+  const tierMult = window.tierMultipliers[window.currentGroomingTier] || 1.0;
+  const sizeMult = window.sizeMultipliers[window.currentPetSize] || 1.0;
+
+  const baseBath = 799;
+  const baseStyling = 1499;
+  const baseDeshedding = 1899;
+
+  const finalBath = Math.round(baseBath * tierMult * sizeMult);
+  const finalStyling = Math.round(baseStyling * tierMult * sizeMult);
+  const finalDeshedding = Math.round(baseDeshedding * tierMult * sizeMult);
+
+  const elBath = document.getElementById('price-bath');
+  const elStyling = document.getElementById('price-styling');
+  const elDeshedding = document.getElementById('price-deshedding');
+
+  if (elBath) elBath.textContent = `₹${finalBath.toLocaleString('en-IN')}`;
+  if (elStyling) elStyling.textContent = `₹${finalStyling.toLocaleString('en-IN')}`;
+  if (elDeshedding) elDeshedding.textContent = `₹${finalDeshedding.toLocaleString('en-IN')}`;
+};
+
+// Book Grooming Package on WhatsApp
+window.bookGrooming = function(packageName) {
+  const tierName = window.currentGroomingTier === 'city' ? 'Metro City' : (window.currentGroomingTier === 'town' ? 'Town/Tier-2' : 'Village/Rural');
+  const sizeName = window.currentPetSize === 'cat' ? 'Cat/Kitten' : `${window.currentPetSize.toUpperCase()} Dog`;
+  let priceText = '₹1,499';
+  if (packageName.includes('Hydro-Bath')) priceText = document.getElementById('price-bath')?.textContent || '₹799';
+  if (packageName.includes('Styling')) priceText = document.getElementById('price-styling')?.textContent || '₹1,499';
+  if (packageName.includes('De-Shedding')) priceText = document.getElementById('price-deshedding')?.textContent || '₹1,899';
+
+  const cityLabel = document.getElementById('current-city-label')?.textContent || 'India';
+  const msg = encodeURIComponent(`Hi eatNtreat India! I want to book a Doorstep Grooming Van for "${packageName}" (${sizeName}, ${tierName} Rate: ${priceText}) in ${cityLabel}. Please confirm slot availability.`);
+  window.open(`https://wa.me/918779692292?text=${msg}`, '_blank');
+};
+
+// Grooming Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const tierButtons = document.querySelectorAll('.tier-btn');
+  tierButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tierButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      window.currentGroomingTier = btn.dataset.tier;
+      window.updateGroomingPrices();
+    });
+  });
+
+  const sizePills = document.querySelectorAll('.size-pill');
+  sizePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      sizePills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      window.currentPetSize = pill.dataset.size;
+      window.updateGroomingPrices();
+    });
+  });
+
+  window.updateGroomingPrices();
+});
+
+/**
+ * ============================================================================
+ * EATNTREAT — SHOPPING CART & TREATS STORE CONTROLLER
+ * Mobile-First Cart Drawer • Item Counter • Instant WhatsApp Checkout
+ * ============================================================================
+ */
+
+window.shopCart = [];
+
+window.addToCart = function(name, price, image) {
+  const existing = window.shopCart.find(i => i.name === name);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    window.shopCart.push({ name, price, image, qty: 1 });
+  }
+
+  updateCartUI();
+
+  const drawer = document.getElementById('cart-drawer-modal');
+  if (drawer) drawer.classList.add('active');
+
+  if (typeof confetti === 'function') {
+    confetti({ particleCount: 40, spread: 60, origin: { y: 0.8 } });
+  }
+};
+
+window.removeFromCart = function(index) {
+  window.shopCart.splice(index, 1);
+  updateCartUI();
+};
+
+function updateCartUI() {
+  const container = document.getElementById('cart-items-container');
+  const countBadge = document.getElementById('cart-item-count');
+  const totalVal = document.getElementById('cart-total-val');
+
+  let totalItems = 0;
+  let totalPrice = 0;
+
+  window.shopCart.forEach(i => {
+    totalItems += i.qty;
+    totalPrice += i.price * i.qty;
+  });
+
+  if (countBadge) countBadge.textContent = totalItems;
+  if (totalVal) totalVal.textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
+
+  if (container) {
+    if (window.shopCart.length === 0) {
+      container.innerHTML = `
+        <div class="cart-empty-text">
+          <i data-lucide="shopping-bag"></i>
+          <p>Your treats & care bag is empty.</p>
+          <span>Select gourmet treats or puppy food to begin!</span>
+        </div>
+      `;
+    } else {
+      container.innerHTML = '';
+      window.shopCart.forEach((item, idx) => {
+        const row = document.createElement('div');
+        row.className = 'cart-item-row';
+        row.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="cart-item-thumb">
+          <div class="cart-item-info" style="flex: 1;">
+            <h5>${item.name}</h5>
+            <span class="cart-item-p">₹${item.price.toLocaleString('en-IN')} × ${item.qty}</span>
+          </div>
+          <button style="background:transparent; border:none; color:#94A3B8; cursor:pointer; padding:6px;" onclick="removeFromCart(${idx})" title="Remove">
+            <i data-lucide="trash-2"></i>
+          </button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    if (window.lucide) window.lucide.createIcons();
+  }
+}
+
+// Cart Drawer Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const cartToggleBtn = document.getElementById('btn-cart-toggle');
+  const cartDrawer = document.getElementById('cart-drawer-modal');
+  const closeCartBtn = document.getElementById('btn-close-cart');
+  const checkoutBtn = document.getElementById('btn-checkout');
+
+  if (cartToggleBtn && cartDrawer) {
+    cartToggleBtn.addEventListener('click', () => {
+      cartDrawer.classList.add('active');
+    });
+  }
+  if (closeCartBtn && cartDrawer) {
+    closeCartBtn.addEventListener('click', () => {
+      cartDrawer.classList.remove('active');
+    });
+  }
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      if (window.shopCart.length === 0) {
+        showToast("Your cart is empty. Please add treats or accessories.");
+        return;
+      }
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      }
+      
+      const city = document.getElementById('current-city-label')?.textContent || 'India';
+      const itemsList = window.shopCart.map(i => `${i.name} (x${i.qty}) - ₹${(i.price * i.qty).toLocaleString('en-IN')}`).join(', ');
+      const total = window.shopCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      
+      const msg = encodeURIComponent(`Hi eatNtreat India! I want to place an order for: ${itemsList}. Total: ₹${total.toLocaleString('en-IN')} in ${city}. Please share delivery timeframe.`);
+      window.open(`https://wa.me/918779692292?text=${msg}`, '_blank');
+      
+      window.shopCart = [];
+      updateCartUI();
+      if (cartDrawer) cartDrawer.classList.remove('active');
+    });
+  }
+});
+
+/**
+ * ============================================================================
+ * EATNTREAT — AUTHENTICATION & USER PROFILE CONTROLLER
+ * Sign In Modal • Registration Toggle • Google Login • Seller Onboarding
+ * ============================================================================
+ */
+
+window.isRegisterMode = false;
+
+window.openAuthModal = function() {
+  const authModal = document.getElementById('auth-signin-modal');
+  if (authModal) authModal.classList.add('active');
+};
+
+window.closeAuthModal = function() {
+  const authModal = document.getElementById('auth-signin-modal');
+  if (authModal) authModal.classList.remove('active');
+};
+
+window.toggleAuthMode = function() {
+  window.isRegisterMode = !window.isRegisterMode;
+  const title = document.getElementById('auth-modal-title');
+  const subtitle = document.getElementById('auth-modal-subtitle');
+  const submitBtn = document.getElementById('btn-auth-submit');
+  const switchText = document.getElementById('auth-switch-text');
+  const switchLink = document.getElementById('auth-switch-link');
+
+  if (window.isRegisterMode) {
+    if (title) title.textContent = 'Register';
+    if (subtitle) subtitle.textContent = 'Create your eatNtreat account in seconds';
+    if (submitBtn) submitBtn.textContent = 'Create Account';
+    if (switchText) switchText.textContent = 'Already have an account?';
+    if (switchLink) switchLink.textContent = 'Sign In';
+  } else {
+    if (title) title.textContent = 'Sign In';
+    if (subtitle) subtitle.textContent = 'Get started with eatNtreat now by signing in';
+    if (submitBtn) submitBtn.textContent = 'Sign In';
+    if (switchText) switchText.textContent = "Don't have an account?";
+    if (switchLink) switchLink.textContent = 'Register Now';
+  }
+};
+
+window.handleAuthSubmit = function(e) {
+  e.preventDefault();
+  const email = document.getElementById('auth-email')?.value || 'Pet Parent';
+  const action = window.isRegisterMode ? 'Account created successfully!' : 'Signed in successfully!';
+  showToast(`🎉 Welcome to eatNtreat! ${action}`);
+  if (typeof confetti === 'function') {
+    confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+  }
+  window.closeAuthModal();
+  const openAuthBtn = document.getElementById('btn-open-auth-modal');
+  if (openAuthBtn) {
+    openAuthBtn.style.background = '#ECFDF5';
+    openAuthBtn.style.borderColor = '#10B981';
+    openAuthBtn.style.color = '#10B981';
+  }
+};
+
+window.handleGoogleSignIn = function() {
+  showToast('✨ Signed in with Google! Welcome to eatNtreat.');
+  if (typeof confetti === 'function') {
+    confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+  }
+  window.closeAuthModal();
+  const openAuthBtn = document.getElementById('btn-open-auth-modal');
+  if (openAuthBtn) {
+    openAuthBtn.style.background = '#ECFDF5';
+    openAuthBtn.style.borderColor = '#10B981';
+    openAuthBtn.style.color = '#10B981';
+  }
+};
+
+window.handleForgotPassword = function() {
+  const email = document.getElementById('auth-email')?.value;
+  if (email) {
+    showToast(`Password reset link sent to ${email}`);
+  } else {
+    showToast('Please enter your email above to reset password.');
+  }
+};
+
+// Sell a Pet Helper
+window.openSellPetModal = function() {
+  const city = document.getElementById('current-city-label')?.textContent || 'India';
+  const msg = encodeURIComponent(`Hi eatNtreat India! I am a verified ethical breeder / pet parent in ${city} and want to list puppies for sale on eatNtreat. Please share the breeder registration process.`);
+  window.open(`https://wa.me/918779692292?text=${msg}`, '_blank');
+};
+
+// Modal Listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const authModal = document.getElementById('auth-signin-modal');
+  const openAuthBtn = document.getElementById('btn-open-auth-modal');
+  const closeAuthBtn = document.getElementById('btn-close-auth-modal');
+
+  if (openAuthBtn) openAuthBtn.addEventListener('click', window.openAuthModal);
+  if (closeAuthBtn) closeAuthBtn.addEventListener('click', window.closeAuthModal);
+  if (authModal) {
+    authModal.addEventListener('click', (e) => {
+      if (e.target === authModal) window.closeAuthModal();
+    });
+  }
+});
+
+/**
+ * ============================================================================
+ * EATNTREAT — AI BREED MATCHER QUIZ ENGINE
+ * Gamified Step-by-Step Questionnaire • Temperament Matcher
+ * ============================================================================
+ */
+
+window.quizAnswers = {};
+
+window.selectQuizAnswer = function(step, val) {
+  window.quizAnswers[step] = val;
+
+  const curStepEl = document.getElementById(`quiz-step-${step}`);
+  if (curStepEl) curStepEl.classList.remove('active');
+
+  if (step < 3) {
+    const nextStepEl = document.getElementById(`quiz-step-${step + 1}`);
+    if (nextStepEl) nextStepEl.classList.add('active');
+  } else {
+    calculateQuizMatch();
+  }
+};
+
+function calculateQuizMatch() {
+  const resultStep = document.getElementById('quiz-result-step');
+  const title = document.getElementById('quiz-match-title');
+  const desc = document.getElementById('quiz-match-desc');
+  const viewBtn = document.getElementById('btn-view-matched-puppies');
+
+  let matchBreed = 'Golden Retriever';
+  let matchDesc = 'The ultimate family companion! Loving, patient with children, and highly intelligent.';
+
+  if (window.quizAnswers[3] === 'hypoallergenic' || window.quizAnswers[1] === 'apartment') {
+    if (window.quizAnswers[2] === 'calm') {
+      matchBreed = 'Shih-Tzu';
+      matchDesc = 'Fluffy, gentle, non-shedding, and loves curling up on the sofa. Perfect for flats.';
+    } else {
+      matchBreed = 'Poodle';
+      matchDesc = 'Brilliant, non-shedding Toy Poodle! Extremely smart, clean, and full of playful energy.';
+    }
+  } else if (window.quizAnswers[3] === 'guard_dog') {
+    matchBreed = 'German Shepherd';
+    matchDesc = 'Majestic, brave, and deeply loyal. An outstanding protector for independent houses.';
+  } else if (window.quizAnswers[2] === 'high') {
+    matchBreed = 'Siberian Husky';
+    matchDesc = 'Spirited, active, and breathtakingly gorgeous. Loves jogging and outdoor adventures.';
+  } else if (window.quizAnswers[1] === 'apartment') {
+    matchBreed = 'Beagle';
+    matchDesc = 'Compact, friendly, and affectionate with big expressive eyes and a curious personality.';
+  } else {
+    matchBreed = 'Labrador';
+    matchDesc = 'India’s most beloved dog! Gentle, loyal, easy to train, and deeply devoted to your family.';
+  }
+
+  if (title) title.textContent = matchBreed;
+  if (desc) desc.textContent = matchDesc;
+  if (resultStep) resultStep.classList.add('active');
+
+  if (viewBtn) {
+    viewBtn.onclick = () => {
+      filterByBreedName(matchBreed);
+    };
+  }
+
+  if (typeof confetti === 'function') {
+    confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } });
+  }
+}
+
+window.resetQuiz = function() {
+  window.quizAnswers = {};
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  const firstStep = document.getElementById('quiz-step-1');
+  if (firstStep) firstStep.classList.add('active');
+};
+
+/**
+ * ============================================================================
+ * EATNTREAT — PUPPY EMI CALCULATOR
+ * 0% Downpayment • Real-Time Monthly Calculation • WhatsApp Application
+ * ============================================================================
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const emiSlider = document.getElementById('emi-budget-slider');
+  const emiBudgetDisplay = document.getElementById('emi-budget-display');
+  const emiMonthlyAmount = document.getElementById('emi-monthly-amount');
+  const tenurePills = document.querySelectorAll('.tenure-pill');
+  const applyEmiBtn = document.getElementById('btn-apply-emi');
+
+  let selectedTenure = 6;
+
+  function updateEmiCalculation() {
+    if (!emiSlider) return;
+    const budget = parseInt(emiSlider.value, 10);
+    if (emiBudgetDisplay) {
+      emiBudgetDisplay.textContent = `₹${budget.toLocaleString('en-IN')}`;
+    }
+    const monthlyEmi = Math.round(budget / selectedTenure);
+    if (emiMonthlyAmount) {
+      emiMonthlyAmount.textContent = `₹${monthlyEmi.toLocaleString('en-IN')} / month`;
+    }
+  }
+
+  if (emiSlider) {
+    emiSlider.addEventListener('input', updateEmiCalculation);
+  }
+
+  tenurePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      tenurePills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      selectedTenure = parseInt(pill.dataset.months, 10);
+      updateEmiCalculation();
+    });
+  });
+
+  if (applyEmiBtn) {
+    applyEmiBtn.addEventListener('click', () => {
+      const budget = emiSlider ? parseInt(emiSlider.value, 10) : 20000;
+      const monthlyEmi = Math.round(budget / selectedTenure);
+      const city = document.getElementById('current-city-label')?.textContent || 'India';
+      const msg = encodeURIComponent(`Hi eatNtreat India! I want to apply for 0% Downpayment Puppy EMI for a budget of ₹${budget.toLocaleString('en-IN')} over ${selectedTenure} months (~₹${monthlyEmi.toLocaleString('en-IN')}/mo) in ${city}. Please guide me on approval.`);
+      window.open(`https://wa.me/918779692292?text=${msg}`, '_blank');
+    });
+  }
+
+  updateEmiCalculation();
+});
+
+/**
+ * ============================================================================
+ * EATNTREAT — MAIN APPLICATION CONTROLLER
+ * Global Initialization • Search Autocomplete • Location Switcher • Drawer
+ * ============================================================================
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Initialize Icons
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  // 2. Initial Render of Directory
+  if (typeof renderPuppiesGrid === 'function') {
+    renderPuppiesGrid('all', '');
+  }
+
+  // 3. Directory Filter Tabs
+  const filterTabs = document.querySelectorAll('.filter-tab-pill');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.category;
+      const searchVal = document.getElementById('global-pet-search')?.value || '';
+      renderPuppiesGrid(cat, searchVal);
+    });
+  });
+
+  // 4. Search Bar Live Filtering
+  const globalSearchInput = document.getElementById('global-pet-search');
+  if (globalSearchInput) {
+    globalSearchInput.addEventListener('input', (e) => {
+      const activeTab = document.querySelector('.filter-tab-pill.active')?.dataset.category || 'all';
+      renderPuppiesGrid(activeTab, e.target.value);
+    });
+  }
+
+  // 5. Expandable Search Bar Toggle
+  const searchToggleBtn = document.getElementById('btn-search-modal-toggle');
+  const searchExpandable = document.getElementById('gf-search-bar-expandable');
+  const closeSearchBarBtn = document.getElementById('btn-close-search-bar');
+
+  if (searchToggleBtn && searchExpandable) {
+    searchToggleBtn.addEventListener('click', () => {
+      searchExpandable.classList.toggle('active');
+      if (searchExpandable.classList.contains('active') && globalSearchInput) {
+        globalSearchInput.focus();
+      }
+    });
+  }
+  if (closeSearchBarBtn && searchExpandable) {
+    closeSearchBarBtn.addEventListener('click', () => {
+      searchExpandable.classList.remove('active');
+    });
+  }
+
+  // 6. City Location Dropdown
+  const locBtn = document.getElementById('location-btn');
+  const locMenu = document.getElementById('location-menu');
+  const locLabel = document.getElementById('current-city-label');
+
+  if (locBtn && locMenu) {
+    locBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      locMenu.classList.toggle('active');
+    });
+
+    const options = locMenu.querySelectorAll('.loc-option');
+    options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        options.forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        const city = opt.dataset.city;
+        const tier = opt.dataset.tier;
+        if (locLabel) locLabel.textContent = city;
+        
+        // Sync with grooming tier if changed
+        if (tier && typeof window.updateGroomingPrices === 'function') {
+          window.currentGroomingTier = tier;
+          const tierBtns = document.querySelectorAll('.tier-btn');
+          tierBtns.forEach(b => {
+            b.classList.toggle('active', b.dataset.tier === tier);
+          });
+          window.updateGroomingPrices();
+        }
+        
+        locMenu.classList.remove('active');
+      });
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!locMenu.contains(e.target) && e.target !== locBtn) {
+        locMenu.classList.remove('active');
+      }
+    });
+  }
+
+  // 7. Mobile Navigation Drawer Controls
+  const mobileMenuBtn = document.getElementById('btn-mobile-menu');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+  const closeMobileNavBtn = document.getElementById('btn-close-mobile-nav');
+  const mobileNavLinks = document.querySelectorAll('.mob-link');
+  const mobileSearchInput = document.getElementById('mobile-pet-search');
+
+  if (mobileMenuBtn && mobileNavBackdrop) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNavBackdrop.classList.add('active');
+    });
+  }
+
+  function closeMobileNav() {
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('active');
+  }
+
+  if (closeMobileNavBtn) closeMobileNavBtn.addEventListener('click', closeMobileNav);
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', (e) => {
+      if (e.target === mobileNavBackdrop) closeMobileNav();
+    });
+  }
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  if (mobileSearchInput) {
+    mobileSearchInput.addEventListener('input', (e) => {
+      const activeTab = document.querySelector('.filter-tab-pill.active')?.dataset.category || 'all';
+      renderPuppiesGrid(activeTab, e.target.value);
+    });
+  }
+
+  // 8. Close Modal when clicking outside
+  const petModal = document.getElementById('pet-details-modal');
+  const closePetModalBtn = document.getElementById('btn-close-pet-modal');
+  if (closePetModalBtn && petModal) {
+    closePetModalBtn.addEventListener('click', () => {
+      petModal.classList.remove('active');
+    });
+  }
+  window.addEventListener('click', (e) => {
+    if (e.target === petModal) petModal.classList.remove('active');
+  });
+});
+
+</script>
 </body>
 </html>
+
